@@ -122,11 +122,7 @@ public class Tengu extends Enemy {
 				currentAction = ATTACKING;
 				animation.setFrames(attackSprites);
 				animation.setDelay(3);
-				DarkEnergy de = new DarkEnergy(tileMap);
-				de.setPosition(x, y);
-				if(facingRight) de.setVector(3, 3);
-				else de.setVector(-3, 3);
-				enemies.add(de);
+	
 			}
 			if(currentAction == ATTACKING && animation.hasPlayedOnce()) {
 				step++;

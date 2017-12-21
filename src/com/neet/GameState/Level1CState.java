@@ -9,7 +9,6 @@ import com.neet.Entity.Enemy;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
-import com.neet.Entity.Enemies.DarkEnergy;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
@@ -306,13 +305,7 @@ public class Level1CState extends GameState {
 		}
 		if(eventCount == 360) {
 			flash = true;
-			DarkEnergy de;
-			for(int i = 0; i < 20; i++) {
-				de = new DarkEnergy(tileMap);
-				de.setPosition(160, 160);
-				de.setVector(Math.random() * 10 - 5, Math.random() * -2 - 3);
-				enemies.add(de);
-			}
+
 		}
 		if(eventCount == 362) {
 			flash = false;

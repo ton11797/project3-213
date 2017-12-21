@@ -28,7 +28,7 @@ public class GameStateManager {
 		paused = false;
 		
 		currentState = MENUSTATE;
-		loadState(currentState);
+                loadState(currentState);
 		
 	}
 	
