@@ -15,7 +15,6 @@ import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
-import com.neet.Entity.Teleport;
 import com.neet.Entity.Title;
 import com.neet.Entity.Enemies.Gazer;
 import com.neet.Entity.Enemies.GelPop;
@@ -40,7 +39,6 @@ public class Level1AState extends GameState {
 	private BufferedImage hageonText;
 	private Title title;
 	private Title subtitle;
-	private Teleport teleport;
 	
 	// events
 	private boolean blockInput = false;
@@ -110,9 +108,6 @@ public class Level1AState extends GameState {
 			e.printStackTrace();
 		}
 		
-		// teleport
-		teleport = new Teleport(tileMap);
-		teleport.setPosition(3700, 131);
 		
 		// start event
 		eventStart = true;
@@ -180,7 +175,7 @@ public class Level1AState extends GameState {
 		handleInput();
 		
 		// check if end of level event should start
-		if(teleport.contains(player)) {
+		if(player.getx() == 3700 ) {
 			eventFinish = blockInput = true;
 		}
 		
@@ -249,8 +244,6 @@ public class Level1AState extends GameState {
 			}
 		}
 		
-		// update teleport
-		teleport.update();
 		
 	}
 	
@@ -282,8 +275,6 @@ public class Level1AState extends GameState {
 		// draw player
 		player.draw(g);
 		
-		// draw teleport
-		teleport.draw(g);
 		
 		// draw hud
 		hud.draw(g);

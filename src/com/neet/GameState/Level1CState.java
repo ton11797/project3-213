@@ -12,10 +12,6 @@ import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
 import com.neet.Entity.Portal;
 import com.neet.Entity.Spirit;
-import com.neet.Entity.Artfact.BottomLeftPiece;
-import com.neet.Entity.Artfact.BottomRightPiece;
-import com.neet.Entity.Artfact.TopLeftPiece;
-import com.neet.Entity.Artfact.TopRightPiece;
 import com.neet.Entity.Enemies.DarkEnergy;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
@@ -33,10 +29,6 @@ public class Level1CState extends GameState {
 	
 	private HUD hud;
 	
-	private TopLeftPiece tlp;
-	private TopRightPiece trp;
-	private BottomLeftPiece blp;
-	private BottomRightPiece brp;
 	private Portal portal;
 	
 	private Spirit spirit;
@@ -94,15 +86,6 @@ public class Level1CState extends GameState {
 		portal = new Portal(tileMap);
 		portal.setPosition(160, 154);
 		
-		// artifact
-		tlp = new TopLeftPiece(tileMap);
-		trp = new TopRightPiece(tileMap);
-		blp = new BottomLeftPiece(tileMap);
-		brp = new BottomRightPiece(tileMap);
-		tlp.setPosition(152, 102);
-		trp.setPosition(162, 102);
-		blp.setPosition(152, 112);
-		brp.setPosition(162, 112);
 		
 		// start event
 		eventStart = blockInput = true;
@@ -186,11 +169,6 @@ public class Level1CState extends GameState {
 		// update portal
 		portal.update();
 		
-		// update artfact
-		tlp.update();
-		trp.update();
-		blp.update();
-		brp.update();
 		
 	}
 	
@@ -215,11 +193,7 @@ public class Level1CState extends GameState {
 			explosions.get(i).draw(g);
 		}
 		
-		// draw artifact
-		tlp.draw(g);
-		trp.draw(g);
-		blp.draw(g);
-		brp.draw(g);
+
 		
 		// draw player
 		player.draw(g);
@@ -360,21 +334,8 @@ public class Level1CState extends GameState {
 			if(eventCount % 4 == 0 || eventCount % 4 == 1) flash = true;
 			else flash = false;
 		}
-		if(eventCount == 181) {
-			tileMap.setShaking(false, 0);
-			flash = false;
-			tlp.setVector(-0.3, -0.3);
-			trp.setVector(0.3, -0.3);
-			blp.setVector(-0.3, 0.3);
-			brp.setVector(0.3, 0.3);
-			player.setEmote(Player.SURPRISED);
-		}
-		if(eventCount == 240) {
-			tlp.setVector(0, -5);
-			trp.setVector(0, -5);
-			blp.setVector(0, -5);
-			brp.setVector(0, -5);
-		}
+
+
 		if(eventCount == 300) {
 			player.setEmote(Player.NONE);
 			portal.setOpening();
