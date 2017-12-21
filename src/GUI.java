@@ -204,8 +204,10 @@ public class GUI extends javax.swing.JFrame {
     private void TabBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabBarMouseDragged
         // TODO add your handling code here:
                 
-        int x = (int) (evt.getX() - point.getX() + this.getLocation().x);
-        int y = (int) (evt.getY() - point.getY() + this.getLocation().y);
+        int x = this.getLocation().x ;
+        int y = this.getLocation().y ;
+            x += evt.getX() - point.x;
+            y += evt.getY() - point.y;
                 this.setLocation(x,y);
             
     }//GEN-LAST:event_TabBarMouseDragged
