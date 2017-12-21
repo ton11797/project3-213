@@ -26,7 +26,7 @@ public class Keys {
 	
 	public static void keySet(int i, boolean b) {
 		if(i == KeyEvent.VK_LEFT) keyState[LEFT] = b;
-		//else if(i == KeyEvent.VK_UP) keyState[UP] = b;
+		else if(i == KeyEvent.VK_UP) keyState[UP] = b;
 		else if(i == KeyEvent.VK_DOWN) keyState[DOWN] = b;
 		else if(i == KeyEvent.VK_RIGHT) keyState[RIGHT] = b;
 		else if(i == KeyEvent.VK_UP) keyState[BUTTON1] = b;
