@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
-import com.neet.Entity.EnergyParticle;
 import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
@@ -30,7 +29,6 @@ public class Level1CState extends GameState {
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<EnergyParticle> energyParticles;
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
@@ -85,11 +83,9 @@ public class Level1CState extends GameState {
 		enemies = new ArrayList<Enemy>();
 		populateEnemies();
 		
-		// energy particle
-		energyParticles = new ArrayList<EnergyParticle>();
 		
 		// init player
-		player.init(enemies, energyParticles);
+		player.init(enemies);
 		
 		// hud
 		hud = new HUD(player);
@@ -359,10 +355,6 @@ public class Level1CState extends GameState {
 			if(portal.isOpened()) {
 				eventCount = 360;
 			}
-		}
-		if(eventCount > 60 && eventCount < 180) {
-			energyParticles.add(
-				new EnergyParticle(tileMap, 157, 107, (int) (Math.random() * 4)));
 		}
 		if(eventCount >= 160 && eventCount <= 180) {
 			if(eventCount % 4 == 0 || eventCount % 4 == 1) flash = true;

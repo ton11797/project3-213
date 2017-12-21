@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
 import com.neet.Entity.EnemyProjectile;
-import com.neet.Entity.EnergyParticle;
 import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
@@ -35,7 +34,6 @@ public class Level1BState extends GameState {
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<EnemyProjectile> eprojectiles;
-	private ArrayList<EnergyParticle> energyParticles;
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
@@ -82,10 +80,8 @@ public class Level1BState extends GameState {
 		eprojectiles = new ArrayList<EnemyProjectile>();
 		populateEnemies();
 		
-		// energy particle
-		energyParticles = new ArrayList<EnergyParticle>();
 		
-		player.init(enemies, energyParticles);
+		player.init(enemies);
 		
 		// explosions
 		explosions = new ArrayList<Explosion>();

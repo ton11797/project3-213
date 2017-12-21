@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
 import com.neet.Entity.EnemyProjectile;
-import com.neet.Entity.EnergyParticle;
 import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
@@ -35,7 +34,6 @@ public class Level1AState extends GameState {
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<EnemyProjectile> eprojectiles;
-	private ArrayList<EnergyParticle> energyParticles;
 	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
@@ -88,11 +86,9 @@ public class Level1AState extends GameState {
 		eprojectiles = new ArrayList<EnemyProjectile>();
 		populateEnemies();
 		
-		// energy particle
-		energyParticles = new ArrayList<EnergyParticle>();
 		
 		// init player
-		player.init(enemies, energyParticles);
+		player.init(enemies);
 		
 		// explosions
 		explosions = new ArrayList<Explosion>();
@@ -136,15 +132,6 @@ public class Level1AState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		/*Tengu t = new Tengu(tileMap, player, enemies);
-		t.setPosition(1300, 100);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(1330, 100);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(1360, 100);
-		enemies.add(t);*/
 		GelPop gp;
 		Gazer g;
 		
