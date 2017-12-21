@@ -29,7 +29,6 @@ public class Player extends MapObject {
 	private boolean doubleJump;
 	private boolean alreadyDoubleJump;
 	private double doubleJumpStart;
-	private ArrayList<EnergyParticle> energyParticles;
 	private long time;
 	
 	// actions
@@ -150,7 +149,6 @@ public class Player extends MapObject {
 			e.printStackTrace();
 		}
 		
-		energyParticles = new ArrayList<EnergyParticle>();
 		
 		setAnimation(IDLE);
 		
@@ -162,11 +160,8 @@ public class Player extends MapObject {
 		
 	}
 	
-	public void init(
-		ArrayList<Enemy> enemies,
-		ArrayList<EnergyParticle> energyParticles) {
+	public void init(ArrayList<Enemy> enemies) {
 		this.enemies = enemies;
-		this.energyParticles = energyParticles;
 	}
 	
 	public int getHealth() { return health; }
@@ -325,14 +320,6 @@ public class Player extends MapObject {
 			alreadyDoubleJump = true;
 			doubleJump = false;
 			JukeBox.play("playerjump");
-			for(int i = 0; i < 6; i++) {
-				energyParticles.add(
-					new EnergyParticle(
-						tileMap,
-						x,
-						y + cheight / 4,
-						EnergyParticle.DOWN));
-			}
 		}
 		
 		if(!falling) alreadyDoubleJump = false;
@@ -360,9 +347,6 @@ public class Player extends MapObject {
 		
 		// check teleporting
 		if(teleporting) {
-			energyParticles.add(
-				new EnergyParticle(tileMap, x, y, EnergyParticle.UP)
-			);
 		}
 		
 		// update position
@@ -383,14 +367,6 @@ public class Player extends MapObject {
 			}
 		}
 		
-		// energy particles
-		for(int i = 0; i < energyParticles.size(); i++) {
-			energyParticles.get(i).update();
-			if(energyParticles.get(i).shouldRemove()) {
-				energyParticles.remove(i);
-				i--;
-			}
-		}
 		
 		// check attack finished
 		if(currentAction == ATTACKING ||
@@ -407,20 +383,7 @@ public class Player extends MapObject {
 			cr.y = (int)y - 20;
 			if(facingRight) cr.x = (int)x - 15;
 			else cr.x = (int)x - 35;
-			if(facingRight)
-				energyParticles.add(
-					new EnergyParticle(
-						tileMap,
-						x + 30,
-						y,
-						EnergyParticle.RIGHT));
-			else
-				energyParticles.add(
-					new EnergyParticle(
-						tileMap,
-						x - 30,
-						y,
-						EnergyParticle.LEFT));
+			if(facingRight){;}
 		}
 		
 		// check enemy interaction
@@ -490,18 +453,6 @@ public class Player extends MapObject {
 				aur.x = (int)x - 15;
 				aur.y = (int)y - 50;
 			}
-			else {
-				if(animation.getFrame() == 4 && animation.getCount() == 0) {
-					for(int c = 0; c < 3; c++) {
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap,
-								aur.x + aur.width / 2,
-								aur.y + 5,
-								EnergyParticle.UP));
-					}
-				}
-			}
 		}
 		else if(attacking) {
 			if(currentAction != ATTACKING) {
@@ -510,25 +461,6 @@ public class Player extends MapObject {
 				ar.y = (int)y - 6;
 				if(facingRight) ar.x = (int)x + 10;
 				else ar.x = (int)x - 40;
-			}
-			else {
-				if(animation.getFrame() == 4 && animation.getCount() == 0) {
-				for(int c = 0; c < 3; c++) {
-					if(facingRight)
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap, 
-								ar.x + ar.width - 4, 
-								ar.y + ar.height / 2,
-								EnergyParticle.RIGHT));
-					else
-						energyParticles.add(
-							new EnergyParticle(
-								tileMap,
-								ar.x + 4,
-								ar.y + ar.height / 2,
-								EnergyParticle.LEFT));	
-				}}
 			}
 		}
 		else if(charging) {
@@ -580,10 +512,6 @@ public class Player extends MapObject {
 			g.drawImage(surprised, (int)(x + xmap - cwidth / 2), (int)(y + ymap - 40), null);
 		}
 		
-		// draw energy particles
-		for(int i = 0; i < energyParticles.size(); i++) {
-			energyParticles.get(i).draw(g);
-		}
 		
 		// flinch
 		if(flinching && !knockback) {
