@@ -37,7 +37,6 @@ public class Player extends MapObject {
 	private boolean upattacking;
 	private boolean charging;
 	private int chargingTick;
-	private boolean teleporting;
 	
 	// animations
 	private ArrayList<BufferedImage[]> sprites;
@@ -69,8 +68,7 @@ public class Player extends MapObject {
 	private static final int DASHING = 7;
 	private static final int KNOCKBACK = 8;
 	private static final int DEAD = 9;
-	private static final int TELEPORTING = 10;
-	
+
 	// emotes
 	private BufferedImage confused;
 	private BufferedImage surprised;
@@ -170,7 +168,7 @@ public class Player extends MapObject {
 	public void setEmote(int i) {
 		emote = i;
 	}
-	public void setTeleporting(boolean b) { teleporting = b; }
+
 	
 	public void setJumping(boolean b) {
 		if(knockback) return;
@@ -345,9 +343,7 @@ public class Player extends MapObject {
 		
 		time++;
 		
-		// check teleporting
-		if(teleporting) {
-		}
+
 		
 		// update position
 		boolean isFalling = falling;
@@ -431,12 +427,7 @@ public class Player extends MapObject {
 		}
 		
 		// set animation, ordered by priority
-		if(teleporting) {
-			if(currentAction != TELEPORTING) {
-				setAnimation(TELEPORTING);
-			}
-		}
-		else if(knockback) {
+		if(knockback) {
 			if(currentAction != KNOCKBACK) {
 				setAnimation(KNOCKBACK);
 			}
