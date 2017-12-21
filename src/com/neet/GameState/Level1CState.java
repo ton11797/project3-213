@@ -177,22 +177,6 @@ public class Level1CState extends GameState {
 		for(int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).draw(g);
 		}
-<<<<<<< Updated upstream
-		
-		// draw explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).draw(g);
-		}
-		
-
-=======
-
-		// draw artifact
-		tlp.draw(g);
-		trp.draw(g);
-		blp.draw(g);
-		brp.draw(g);
->>>>>>> Stashed changes
 		
 		// draw player
 		player.draw(g);
