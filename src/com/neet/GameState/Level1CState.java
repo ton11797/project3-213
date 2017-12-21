@@ -9,8 +9,6 @@ import com.neet.Entity.Enemy;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
-import com.neet.Entity.Portal;
-import com.neet.Entity.Spirit;
 import com.neet.Entity.Enemies.DarkEnergy;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
@@ -28,9 +26,7 @@ public class Level1CState extends GameState {
 	
 	private HUD hud;
 	
-	private Portal portal;
 	
-	private Spirit spirit;
 	
 	// events
 	private boolean blockInput = false;
@@ -80,9 +76,7 @@ public class Level1CState extends GameState {
 		// hud
 		hud = new HUD(player);
 		
-		// portal
-		portal = new Portal(tileMap);
-		portal.setPosition(160, 154);
+
 		
 		
 		// start event
@@ -103,9 +97,6 @@ public class Level1CState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		spirit = new Spirit(tileMap, player, enemies);
-		spirit.setPosition(-9000, 9000);
-		enemies.add(spirit);
 	}
 	
 	public void update() {
@@ -113,10 +104,7 @@ public class Level1CState extends GameState {
 		// check keys
 		handleInput();
 		
-		// check if boss dead event should start
-		if(!eventFinish && spirit.isDead()) {
-			eventBossDead = blockInput = true;
-		}
+
 		
 		// check if player dead event should start
 		if(player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
@@ -156,6 +144,15 @@ public class Level1CState extends GameState {
 		}
 
 		
+		// update explosions
+		for(int i = 0; i < explosions.size(); i++) {
+			explosions.get(i).update();
+			if(explosions.get(i).shouldRemove()) {
+				explosions.remove(i);
+				i--;
+			}
+		}
+		
 		// update portal
 		portal.update();
 		
@@ -170,8 +167,7 @@ public class Level1CState extends GameState {
 		// draw tilemap
 		tileMap.draw(g);
 		
-		// draw portal
-		portal.draw(g);
+
 		
 		// draw enemies
 		for(int i = 0; i < enemies.size(); i++) {
@@ -234,7 +230,6 @@ public class Level1CState extends GameState {
 			tb.add(new Rectangle(0, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
 			tb.add(new Rectangle(0, GamePanel.HEIGHT / 2, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
 			tb.add(new Rectangle(GamePanel.WIDTH / 2, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-			if(!portal.isOpened()) tileMap.setShaking(true, 10);
 			JukeBox.stop("level1");
 		}
 		if(eventCount > 1 && eventCount < 60) {
@@ -309,9 +304,7 @@ public class Level1CState extends GameState {
 	private void eventPortal() {
 		eventCount++;
 		if(eventCount == 1) {
-			if(portal.isOpened()) {
-				eventCount = 360;
-			}
+
 		}
 		if(eventCount >= 160 && eventCount <= 180) {
 			if(eventCount % 4 == 0 || eventCount % 4 == 1) flash = true;
@@ -321,11 +314,9 @@ public class Level1CState extends GameState {
 
 		if(eventCount == 300) {
 			player.setEmote(Player.NONE);
-			portal.setOpening();
 		}
 		if(eventCount == 360) {
 			flash = true;
-			spirit.setPosition(160, 160);
 			DarkEnergy de;
 			for(int i = 0; i < 20; i++) {
 				de = new DarkEnergy(tileMap);
@@ -346,7 +337,7 @@ public class Level1CState extends GameState {
 		if(eventCount == 420) {
 			eventPortal = blockInput = false;
 			eventCount = 0;
-			spirit.setActive();
+
 		}
 		
 	}
