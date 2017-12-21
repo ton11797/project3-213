@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
 import com.neet.Entity.EnemyProjectile;
-import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
@@ -33,7 +32,6 @@ public class Level1AState extends GameState {
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<EnemyProjectile> eprojectiles;
-	private ArrayList<Explosion> explosions;
 	
 	private HUD hud;
 	private BufferedImage hageonText;
@@ -87,9 +85,7 @@ public class Level1AState extends GameState {
 		
 		// init player
 		player.init(enemies);
-		
-		// explosions
-		explosions = new ArrayList<Explosion>();
+
 		
 		// hud
 		hud = new HUD(player);
@@ -221,7 +217,6 @@ public class Level1AState extends GameState {
 			if(e.isDead()) {
 				enemies.remove(i);
 				i--;
-				explosions.add(new Explosion(tileMap, e.getx(), e.gety()));
 			}
 		}
 		
@@ -234,15 +229,7 @@ public class Level1AState extends GameState {
 				i--;
 			}
 		}
-		
-		// update explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove()) {
-				explosions.remove(i);
-				i--;
-			}
-		}
+
 		
 		
 	}
@@ -265,11 +252,6 @@ public class Level1AState extends GameState {
 		// draw enemy projectiles
 		for(int i = 0; i < eprojectiles.size(); i++) {
 			eprojectiles.get(i).draw(g);
-		}
-		
-		// draw explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).draw(g);
 		}
 		
 		// draw player

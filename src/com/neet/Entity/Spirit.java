@@ -14,7 +14,6 @@ public class Spirit extends Enemy {
 	public BufferedImage[] sprites;
 	private Player player;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<Explosion> explosions;
 	
 	private boolean active;
 	private boolean finalAttack;
@@ -36,12 +35,11 @@ public class Spirit extends Enemy {
 	private DarkEnergy[] shield;
 	private double ticks;
 	
-	public Spirit(TileMap tm, Player p, ArrayList<Enemy> enemies, ArrayList<Explosion> explosions) {
+	public Spirit(TileMap tm, Player p, ArrayList<Enemy> enemies) {
 		
 		super(tm);
 		player = p;
 		this.enemies = enemies;
-		this.explosions = explosions;
 		
 		width = 40;
 		height = 40;
@@ -130,7 +128,6 @@ public class Spirit extends Enemy {
 		if(finalAttack) {
 			stepCount++;
 			if(stepCount == 1) {
-				explosions.add(new Explosion(tileMap, (int)x, (int)y));
 				x = -9000;
 				y = 9000;
 				dx = dy = 0;
@@ -138,7 +135,6 @@ public class Spirit extends Enemy {
 			if(stepCount == 60) {
 				x = tileMap.getWidth() / 2;
 				y = tileMap.getHeight() / 2;
-				explosions.add(new Explosion(tileMap, (int)x, (int)y));
 			}
 			if(stepCount >= 90 && stepCount % 30 == 0) {
 				DarkEnergy de = new DarkEnergy(tileMap);
@@ -191,7 +187,6 @@ public class Spirit extends Enemy {
 		else if(steps[step] == 1) {
 			stepCount++;
 			if(stepCount == 1) {
-				explosions.add(new Explosion(tileMap, (int)x, (int)y));
 				x = -9000;
 				y = 9000;
 				dx = dy = 0;
@@ -207,7 +202,6 @@ public class Spirit extends Enemy {
 					y = tileMap.getHeight() - 60;
 					dx = -4;
 				}
-				explosions.add(new Explosion(tileMap, (int)x, (int)y));
 			}
 			if((dx == -4 && x < 30) || (dx == 4 && x > tileMap.getWidth() - 30)) {
 				stepCount = 0;

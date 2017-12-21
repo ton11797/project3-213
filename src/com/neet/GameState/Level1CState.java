@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
-import com.neet.Entity.Explosion;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
@@ -25,7 +24,7 @@ public class Level1CState extends GameState {
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<Explosion> explosions;
+
 	
 	private HUD hud;
 	
@@ -68,8 +67,7 @@ public class Level1CState extends GameState {
 		player.setLives(PlayerSave.getLives());
 		player.setTime(PlayerSave.getTime());
 		
-		// explosions
-		explosions = new ArrayList<Explosion>();
+
 		
 		// enemies
 		enemies = new ArrayList<Enemy>();
@@ -105,7 +103,7 @@ public class Level1CState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		spirit = new Spirit(tileMap, player, enemies, explosions);
+		spirit = new Spirit(tileMap, player, enemies);
 		spirit.setPosition(-9000, 9000);
 		enemies.add(spirit);
 	}
@@ -153,18 +151,10 @@ public class Level1CState extends GameState {
 			if(e.isDead() || e.shouldRemove()) {
 				enemies.remove(i);
 				i--;
-				explosions.add(new Explosion(tileMap, e.getx(), e.gety()));
+
 			}
 		}
-		
-		// update explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove()) {
-				explosions.remove(i);
-				i--;
-			}
-		}
+
 		
 		// update portal
 		portal.update();
@@ -187,6 +177,7 @@ public class Level1CState extends GameState {
 		for(int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).draw(g);
 		}
+<<<<<<< Updated upstream
 		
 		// draw explosions
 		for(int i = 0; i < explosions.size(); i++) {
@@ -194,6 +185,14 @@ public class Level1CState extends GameState {
 		}
 		
 
+=======
+
+		// draw artifact
+		tlp.draw(g);
+		trp.draw(g);
+		blp.draw(g);
+		brp.draw(g);
+>>>>>>> Stashed changes
 		
 		// draw player
 		player.draw(g);
@@ -376,7 +375,6 @@ public class Level1CState extends GameState {
 			enemies.clear();
 		}
 		if(eventCount <= 120 && eventCount % 15 == 0) {
-			explosions.add(new Explosion(tileMap, spirit.getx(), spirit.gety()));
 			JukeBox.play("explode");
 		}
 		if(eventCount == 180) {
