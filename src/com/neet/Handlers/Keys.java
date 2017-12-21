@@ -29,7 +29,7 @@ public class Keys {
 		else if(i == KeyEvent.VK_UP) keyState[UP] = b;
 		else if(i == KeyEvent.VK_DOWN) keyState[DOWN] = b;
 		else if(i == KeyEvent.VK_RIGHT) keyState[RIGHT] = b;
-		else if(i == KeyEvent.VK_UP) keyState[BUTTON1] = b;
+		else if(i == KeyEvent.VK_SPACE) keyState[BUTTON1] = b;
 		else if(i == KeyEvent.VK_E) keyState[BUTTON2] = b;
 		else if(i == KeyEvent.VK_R) keyState[BUTTON3] = b;
 		else if(i == KeyEvent.VK_F) keyState[BUTTON4] = b;

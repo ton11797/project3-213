@@ -97,8 +97,8 @@ public class Player extends MapObject {
 		cwidth = 15;
 		cheight = 38;
 		
-		moveSpeed = 10.5;
-		maxSpeed = 100.0;
+		moveSpeed = 1.0;
+		maxSpeed =  2.5;
 		stopSpeed = 10.5;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;
@@ -320,7 +320,7 @@ public class Player extends MapObject {
 		}
 		
 		if(doubleJump) {
-			dy = -10.3;
+			dy = -5.5;
 			//dy = doubleJumpStart;
 			alreadyDoubleJump = true;
 			doubleJump = false;
