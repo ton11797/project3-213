@@ -144,17 +144,6 @@ public class Level1CState extends GameState {
 		}
 
 		
-		// update explosions
-		for(int i = 0; i < explosions.size(); i++) {
-			explosions.get(i).update();
-			if(explosions.get(i).shouldRemove()) {
-				explosions.remove(i);
-				i--;
-			}
-		}
-		
-		// update portal
-		portal.update();
 		
 		
 	}
