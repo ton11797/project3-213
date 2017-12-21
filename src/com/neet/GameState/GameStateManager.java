@@ -41,8 +41,6 @@ public class GameStateManager {
 			gameStates[state] = new Level1BState(this);
 		else if(state == LEVEL1CSTATE)
 			gameStates[state] = new Level1CState(this);
-		else if(state == ACIDSTATE)
-			gameStates[state] = new AcidState(this);
 	}
 	
 	private void unloadState(int state) {
