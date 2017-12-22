@@ -360,7 +360,6 @@ public class Level1AState extends GameState {
 		eventCount++;
 		if(eventCount == 1) {
 			JukeBox.play("teleport");
-			player.setTeleporting(true);
 			player.stop();
 		}
 		else if(eventCount == 120) {

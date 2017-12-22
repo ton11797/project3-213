@@ -27,7 +27,7 @@ public class GameStateManager {
 		pauseState = new PauseState(this);
 		paused = false;
 		
-		currentState = MENUSTATE;
+		currentState = LEVEL1ASTATE;
                 loadState(currentState);
 		
 	}
