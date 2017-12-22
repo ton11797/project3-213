@@ -219,11 +219,13 @@ public abstract class MapObject {
 	
 	public void draw(java.awt.Graphics2D g) {
 		setMapPosition();
-		if(facingRight) {
+		if(!facingRight) {
 			g.drawImage(
 				animation.getImage(),
 				(int)(x + xmap - width / 2),
 				(int)(y + ymap - height / 2),
+                                width,
+				height,
 				null
 			);
 		}
@@ -243,5 +245,6 @@ public abstract class MapObject {
 		//r.y += ymap;
 		//g.draw(r);
 	}
+        
 	
 }

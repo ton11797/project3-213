@@ -22,7 +22,7 @@ public class GelPop extends Enemy {
 		
 		health = maxHealth = 1;
 		
-		width = 25;
+		width = 30;
 		height = 25;
 		cwidth = 20;
 		cheight = 18;
@@ -34,7 +34,6 @@ public class GelPop extends Enemy {
 		jumpStart = -5;
 		
 		sprites = Content.GelPop[0];
-		
 		animation.setFrames(sprites);
 		animation.setDelay(4);
 		
@@ -98,7 +97,6 @@ public class GelPop extends Enemy {
 		if(flinching) {
 			if(flinchCount == 0 || flinchCount == 2) return;
 		}
-		
 		super.draw(g);
 		
 	}

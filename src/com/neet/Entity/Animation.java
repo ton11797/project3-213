@@ -1,5 +1,6 @@
 package com.neet.Entity;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class Animation {
@@ -25,6 +26,7 @@ public class Animation {
 		delay = 0;
 		numFrames = frames.length;
 	}
+        
 	
 	public void setDelay(int i) { delay = i; }
 	public void setFrame(int i) { currentFrame = i; }
