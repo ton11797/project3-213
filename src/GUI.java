@@ -220,12 +220,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_TabBarMousePressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        s.setValue(1);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        s.setValue(1);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
