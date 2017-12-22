@@ -41,16 +41,16 @@ public class Player extends MapObject {
 	// animations
 	private ArrayList<BufferedImage[]> sprites;
 	private final int[] NUMFRAMES = {
-		1, 8, 5, 3, 3, 5, 3, 8, 2, 1, 3
+		1, 6, 4, 2, 2, 4, 4, 6, 1, 1, 1
 	};
 	private final int[] FRAMEWIDTHS = {
-		40, 40, 80, 40, 40, 40, 80, 40, 40, 40, 40
+		75, 75, 75, 75, 75, 75, 75, 75, 75, 75, 75
 	};
 	private final int[] FRAMEHEIGHTS = {
-		40, 40, 40, 40, 40, 80, 40, 40, 40, 40, 40
+		52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52
 	};
 	private final int[] SPRITEDELAYS = {
-		-1, 3, 2, 6, 5, 2, 2, 2, 1, -1, 1
+		-1, 3, 4, 6, 5, 2, 2, 2, 1, -1, 1
 	};
 	
 	private Rectangle ar;
@@ -76,7 +76,7 @@ public class Player extends MapObject {
 	public static final int CONFUSED = 1;
 	public static final int SURPRISED = 2;
 	private int emote = NONE;
-	
+
 	public Player(TileMap tm) {
 		
 		super(tm);
@@ -84,7 +84,7 @@ public class Player extends MapObject {
 		ar = new Rectangle(0, 0, 0, 0);
 		ar.width = 30;
 		ar.height = 20;
-		aur = new Rectangle((int)x - 15, (int)y - 45, 30, 30);
+		aur = new Rectangle((int)x - 15, (int)y - 45, 50, 50);
 		cr = new Rectangle(0, 0, 0, 0);
 		cr.width = 50;
 		cr.height = 40;
@@ -114,7 +114,7 @@ public class Player extends MapObject {
 		// load sprites
 		try {
 			BufferedImage spritesheet = ImageIO.read(
-					new File("Resources/Sprites/Player/PlayerSprites.gif")
+					new File("Resources/Sprites/Player/PlayerSprites2.gif")
 			);
 			
 			int count = 0;
@@ -146,16 +146,10 @@ public class Player extends MapObject {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 		setAnimation(IDLE);
-		
-		//JukeBox.load("Resources/SFX/playerjump.mp3", "playerjump");
-		//JukeBox.load("Resources/SFX/playerlands.mp3", "playerlands");
-		//JukeBox.load("Resources/SFX/playerattack.mp3", "playerattack");
-		//JukeBox.load("Resources/SFX/playerhit.mp3", "playerhit");
-		//JukeBox.load("Resources/SFX/playercharge.mp3", "playercharge");
-		
+
 	}
 	
 	public void init(ArrayList<Enemy> enemies) {
