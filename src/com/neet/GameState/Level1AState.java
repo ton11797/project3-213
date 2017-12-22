@@ -1,26 +1,19 @@
 package com.neet.GameState;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
 import com.neet.Audio.JukeBox;
-import com.neet.Entity.Enemy;
-import com.neet.Entity.EnemyProjectile;
-import com.neet.Entity.HUD;
-import com.neet.Entity.Player;
-import com.neet.Entity.PlayerSave;
-import com.neet.Entity.Title;
 import com.neet.Entity.Enemies.Gazer;
 import com.neet.Entity.Enemies.GelPop;
+import com.neet.Entity.*;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
 import com.neet.TileMap.TileMap;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
 
 public class Level1AState extends GameState {
 	
@@ -59,9 +52,9 @@ public class Level1AState extends GameState {
 		mountains = new Background("Resources/Backgrounds/mountains.gif", 0.2);
 		
 		// tilemap
-		tileMap = new TileMap(30);
-		tileMap.loadTiles("Resources/Tilesets/ruinstileset.gif");
-		tileMap.loadMap("Resources/Maps/level1a.map");
+		tileMap = new TileMap(70);
+		tileMap.loadTiles("Resource2/Tilesets/");
+		tileMap.loadMap("Resource2/state1");
 		tileMap.setPosition(140, 0);
 		tileMap.setBounds(
 			tileMap.getWidth() - 1 * tileMap.getTileSize(),

@@ -1,12 +1,13 @@
 package com.neet.TileMap;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import com.neet.Main.GamePanel;
 
 import javax.imageio.ImageIO;
-
-import com.neet.Main.GamePanel;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class TileMap {
@@ -34,7 +35,8 @@ public class TileMap {
 	// tileset
 	private BufferedImage tileset;
 	private int numTilesAcross;
-	private Tile[][] tiles;
+	//private Tile[][] tiles;
+	private ArrayList<Tile> tiles;
 	
 	// drawing
 	private int rowOffset;
@@ -54,8 +56,21 @@ public class TileMap {
 	}
 	
 	public void loadTiles(String s) {
-		
+		System.out.println("LOADING " + s);
+		tiles=new ArrayList<>();
 		try {
+			File file = new File(s+"spritesheet.txt");
+			Scanner scan =new Scanner(file);
+			while (scan.hasNext()){
+				Tile t= new Tile(ImageIO.read(new File(s+scan.next())),scan.nextInt());
+				tiles.add(t);
+			}
+
+
+		}catch (Exception e){
+
+		}
+		/*try {
 
 			tileset = ImageIO.read(
 				new File(s)
@@ -84,7 +99,7 @@ public class TileMap {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 	
@@ -134,9 +149,8 @@ public class TileMap {
 	
 	public int getType(int row, int col) {
 		int rc = map[row][col];
-		int r = rc / numTilesAcross;
-		int c = rc % numTilesAcross;
-		return tiles[r][c].getType();
+		if(rc==0)return Tile.NORMAL;
+		return tiles.get(rc-1).getType();
 	}
 	public boolean isShaking() { return shaking; }
 	
@@ -187,15 +201,17 @@ public class TileMap {
 				if(map[row][col] == 0) continue;
 				
 				int rc = map[row][col];
-				int r = rc / numTilesAcross;
-				int c = rc % numTilesAcross;
-				
-				g.drawImage(
-					tiles[r][c].getImage(),
-					(int)x + col * tileSize,
-					(int)y + row * tileSize,
-					null
-				);
+				//int r = rc / numTilesAcross;
+				//int c = rc % numTilesAcross;
+				if(rc!=0){
+					g.drawImage(
+							tiles.get(rc-1).getImage(),
+							(int)x + col * tileSize,
+							(int)y + row * tileSize,
+							null
+					);
+				}
+
 				
 			}
 			
