@@ -8,7 +8,6 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import com.neet.Audio.JukeBox;
 import com.neet.Entity.PlayerSave;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
@@ -96,7 +95,6 @@ public class MenuState extends GameState {
 	
 	private void select() {
 		if(currentChoice == 0) {
-			JukeBox.play("menuselect");
 			PlayerSave.init();
 			gsm.setState(GameStateManager.LEVEL1ASTATE);
 		}
@@ -109,13 +107,11 @@ public class MenuState extends GameState {
 		if(Keys.isPressed(Keys.ENTER)) select();
 		if(Keys.isPressed(Keys.UP)) {
 			if(currentChoice > 0) {
-				JukeBox.play("menuoption", 0);
 				currentChoice--;
 			}
 		}
 		if(Keys.isPressed(Keys.DOWN)) {
 			if(currentChoice < options.length - 1) {
-				JukeBox.play("menuoption", 0);
 				currentChoice++;
 			}
 		}

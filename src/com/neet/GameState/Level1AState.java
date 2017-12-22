@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
 import com.neet.Entity.EnemyProjectile;
 import com.neet.Entity.HUD;
@@ -366,7 +365,6 @@ public class Level1AState extends GameState {
 	private void eventFinish() {
 		eventCount++;
 		if(eventCount == 1) {
-			JukeBox.play("teleport");
 			player.stop();
 		}
 		else if(eventCount == 120) {
@@ -379,7 +377,6 @@ public class Level1AState extends GameState {
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
 		}
 		if(eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());
