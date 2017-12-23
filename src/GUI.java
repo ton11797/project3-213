@@ -1,5 +1,5 @@
-
-import java.awt.Point;
+import javax.swing.*;
+import java.awt.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +11,7 @@ import java.awt.Point;
  *
  * @author User
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends JFrame {
     private Pass s;
     /**
      * Creates new form GUI
@@ -30,17 +30,17 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TabBar = new javax.swing.JPanel();
-        X = new javax.swing.JLabel();
-        minus = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        MainFrames = new javax.swing.JPanel();
-        MenuFrame = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        TabBar = new JPanel();
+        X = new JLabel();
+        minus = new JLabel();
+        jLabel3 = new JLabel();
+        MainFrames = new JPanel();
+        MenuFrame = new JPanel();
+        jButton1 = new JButton();
+        jButton2 = new JButton();
+        jButton3 = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         TabBar.setBackground(java.awt.Color.orange);
@@ -78,27 +78,27 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("JAPPA GAME");
 
-        javax.swing.GroupLayout TabBarLayout = new javax.swing.GroupLayout(TabBar);
+        GroupLayout TabBarLayout = new GroupLayout(TabBar);
         TabBar.setLayout(TabBarLayout);
         TabBarLayout.setHorizontalGroup(
-            TabBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            TabBarLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(TabBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(minus)
                 .addGap(18, 18, 18)
                 .addComponent(X)
                 .addContainerGap())
         );
         TabBarLayout.setVerticalGroup(
-            TabBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabBarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(TabBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minus, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+            TabBarLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, TabBarLayout.createSequentialGroup()
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(TabBarLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(X, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minus, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -131,60 +131,60 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout MenuFrameLayout = new javax.swing.GroupLayout(MenuFrame);
+        GroupLayout MenuFrameLayout = new GroupLayout(MenuFrame);
         MenuFrame.setLayout(MenuFrameLayout);
         MenuFrameLayout.setHorizontalGroup(
-            MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            MenuFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(MenuFrameLayout.createSequentialGroup()
                 .addGap(266, 266, 266)
-                .addGroup(MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(MenuFrameLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(283, Short.MAX_VALUE))
         );
         MenuFrameLayout.setVerticalGroup(
-            MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuFrameLayout.createSequentialGroup()
+            MenuFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, MenuFrameLayout.createSequentialGroup()
                 .addContainerGap(267, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
 
-        javax.swing.GroupLayout MainFramesLayout = new javax.swing.GroupLayout(MainFrames);
+        GroupLayout MainFramesLayout = new GroupLayout(MainFrames);
         MainFrames.setLayout(MainFramesLayout);
         MainFramesLayout.setHorizontalGroup(
-            MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainFramesLayout.createSequentialGroup()
+            MainFramesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, MainFramesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(MenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MenuFrame, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         MainFramesLayout.setVerticalGroup(
-            MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            MainFramesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(MainFramesLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(MenuFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(MenuFrame, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(MainFrames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(TabBar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainFrames, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(TabBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MainFrames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TabBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MainFrames, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -239,9 +239,9 @@ public class GUI extends javax.swing.JFrame {
 //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 //         */
 //        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//            for (javax.UIManager.LookAndFeelInfo info : javax.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    javax.UIManager.setLookAndFeel(info.getClassName());
 //                    break;
 //                }
 //            }
@@ -251,7 +251,7 @@ public class GUI extends javax.swing.JFrame {
 //            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
 //            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//        } catch (javax.UnsupportedLookAndFeelException ex) {
 //            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
@@ -265,14 +265,14 @@ public class GUI extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel MainFrames;
-    private javax.swing.JPanel MenuFrame;
-    private javax.swing.JPanel TabBar;
-    private javax.swing.JLabel X;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel minus;
+    private JPanel MainFrames;
+    private JPanel MenuFrame;
+    private JPanel TabBar;
+    private JLabel X;
+    private JButton jButton1;
+    private JButton jButton2;
+    private JButton jButton3;
+    private JLabel jLabel3;
+    private JLabel minus;
     // End of variables declaration//GEN-END:variables
 }

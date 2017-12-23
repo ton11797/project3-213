@@ -1,6 +1,5 @@
 package com.neet.GameState;
 
-import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemies.Gazer;
 import com.neet.Entity.Enemies.GelPop;
 import com.neet.Entity.*;
@@ -9,10 +8,8 @@ import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
 import com.neet.TileMap.TileMap;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 
 public class Level1AState extends GameState {
@@ -47,12 +44,12 @@ public class Level1AState extends GameState {
 	public void init() {
 		
 		// backgrounds
-		sky = new Background("Resources/Backgrounds/sky.gif", 0);
-		clouds = new Background("Resources/Backgrounds/clouds.gif", 0.1);
-		mountains = new Background("Resources/Backgrounds/mountains.gif", 0.2);
+		sky = new Background("Resource2/Backgrounds/bg.png", 0);
+		clouds = new Background("Resources/Backgrounds/clouds.gif", 0.5);
+
 		
 		// tilemap
-		tileMap = new TileMap(70);
+		tileMap = new TileMap(35);
 		tileMap.loadTiles("Resource2/Tilesets/");
 		tileMap.loadMap("Resource2/state1");
 		tileMap.setPosition(140, 0);
@@ -65,7 +62,7 @@ public class Level1AState extends GameState {
 		
 		// player
 		player = new Player(tileMap);
-		player.setPosition(300, 161);
+		player.setPosition(300, 100);
 		player.setHealth(PlayerSave.getHealth());
 		player.setLives(PlayerSave.getLives());
 		player.setTime(PlayerSave.getTime());
@@ -82,36 +79,13 @@ public class Level1AState extends GameState {
 		
 		// hud
 		hud = new HUD(player);
-		
-		// title and subtitle
-		try {
-			hageonText = ImageIO.read(
-					new File("Resources/HUD/HageonTemple.gif")
-			);
-			title = new Title(hageonText.getSubimage(0, 0, 178, 20));
-			title.sety(60);
-			subtitle = new Title(hageonText.getSubimage(0, 20, 82, 13));
-			subtitle.sety(85);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
+
 		// start event
 		eventStart = true;
 		tb = new ArrayList<Rectangle>();
 		eventStart();
 		
-		/*// sfx
-		JukeBox.load("/SFX/teleport.mp3", "teleport");
-		JukeBox.load("/SFX/explode.mp3", "explode");
-		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
-		
-		// music
-		JukeBox.load("/Music/level1.mp3", "level1");
-		JukeBox.loop("level1", 600, JukeBox.getFrames("level1") - 2200);
-		*/
+
 	}
 	
 	private void populateEnemies() {
@@ -164,7 +138,8 @@ public class Level1AState extends GameState {
 		handleInput();
 		
 		// check if end of level event should start
-		if(player.getx() == 3700 ) {
+		System.out.println(player.getx());
+		if(player.getx() == 400 ) {
 			eventFinish = blockInput = true;
 		}
 		
@@ -190,7 +165,7 @@ public class Level1AState extends GameState {
 		
 		// move backgrounds
 		clouds.setPosition(tileMap.getx(), tileMap.gety());
-		mountains.setPosition(tileMap.getx(), tileMap.gety());
+		///mountains.setPosition(tileMap.getx(), tileMap.gety());
 		
 		// update player
 		player.update();
@@ -212,19 +187,7 @@ public class Level1AState extends GameState {
 				i--;
 			}
 		}
-		
-		// update enemy projectiles
-		for(int i = 0; i < eprojectiles.size(); i++) {
-			EnemyProjectile ep = eprojectiles.get(i);
-			ep.update();
-			if(ep.shouldRemove()) {
-				eprojectiles.remove(i);
-				i--;
-			}
-		}
 
-		
-		
 	}
 	
 	public void draw(Graphics2D g) {
@@ -232,7 +195,7 @@ public class Level1AState extends GameState {
 		// draw background
 		sky.draw(g);
 		clouds.draw(g);
-		mountains.draw(g);
+		//mountains.draw(g);
 		
 		// draw tilemap
 		tileMap.draw(g);
@@ -293,94 +256,32 @@ public class Level1AState extends GameState {
 		tileMap.setShaking(false, 0);
 		eventStart = true;
 		eventStart();
-		title = new Title(hageonText.getSubimage(0, 0, 178, 20));
-		title.sety(60);
-		subtitle = new Title(hageonText.getSubimage(0, 33, 91, 13));
-		subtitle.sety(85);
 	}
 	
 	// level started
 	private void eventStart() {
-		eventCount++;
-		if(eventCount == 1) {
-			tb.clear();
-			tb.add(new Rectangle(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-			tb.add(new Rectangle(0, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-			tb.add(new Rectangle(0, GamePanel.HEIGHT / 2, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-			tb.add(new Rectangle(GamePanel.WIDTH / 2, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-		}
-		if(eventCount > 1 && eventCount < 60) {
-			tb.get(0).height -= 4;
-			tb.get(1).width -= 6;
-			tb.get(2).y += 4;
-			tb.get(3).x += 6;
-		}
-		if(eventCount == 30) title.begin();
-		if(eventCount == 60) {
-			eventStart = blockInput = false;
-			eventCount = 0;
-			subtitle.begin();
-			tb.clear();
-		}
+		eventStart = blockInput = false;
 	}
 	
 	// player has died
 	private void eventDead() {
-		eventCount++;
-		if(eventCount == 1) {
-			player.setDead();
-			player.stop();
+		if(player.getLives() == 0) {
+			gsm.setState(GameStateManager.MENUSTATE);
 		}
-		if(eventCount == 60) {
-			tb.clear();
-			tb.add(new Rectangle(
-				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-		}
-		else if(eventCount > 60) {
-			tb.get(0).x -= 6;
-			tb.get(0).y -= 4;
-			tb.get(0).width += 12;
-			tb.get(0).height += 8;
-		}
-		if(eventCount >= 120) {
-			if(player.getLives() == 0) {
-				gsm.setState(GameStateManager.MENUSTATE);
-			}
-			else {
-				eventDead = blockInput = false;
-				eventCount = 0;
-				player.loseLife();
-				reset();
-			}
+		else {
+			eventDead = blockInput = false;
+			eventCount = 0;
+			player.loseLife();
+			reset();
 		}
 	}
 	
 	// finished level
 	private void eventFinish() {
-		eventCount++;
-		if(eventCount == 1) {
-			JukeBox.play("teleport");
-			player.stop();
-		}
-		else if(eventCount == 120) {
-			tb.clear();
-			tb.add(new Rectangle(
-				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-		}
-		else if(eventCount > 120) {
-			tb.get(0).x -= 6;
-			tb.get(0).y -= 4;
-			tb.get(0).width += 12;
-			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
-		}
-		if(eventCount == 180) {
-			PlayerSave.setHealth(player.getHealth());
-			PlayerSave.setLives(player.getLives());
-			PlayerSave.setTime(player.getTime());
-			gsm.setState(GameStateManager.LEVEL1BSTATE);
-		}
-		
+		PlayerSave.setHealth(player.getHealth());
+		PlayerSave.setLives(player.getLives());
+		PlayerSave.setTime(player.getTime());
+		gsm.setState(GameStateManager.LEVEL1BSTATE);
 	}
 
 }
