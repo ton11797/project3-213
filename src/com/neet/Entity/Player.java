@@ -109,7 +109,7 @@ public class Player extends MapObject {
 		// load sprites
 		try {
 			BufferedImage spritesheet = ImageIO.read(
-					new File("Resources/Sprites/Player/PlayerSprites2.gif")
+					new File("Resources/Sprites/Player/PlayerSprites"+ModeGame.character+".gif")
 			);
 			
 			int count = 0;
