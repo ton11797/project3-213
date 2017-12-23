@@ -218,7 +218,12 @@ public class GUI extends JFrame {
 
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
+        s.setValue(3);
+        if(s.O!=null) {
+            s.O.dispose();
+        }
         this.dispose();
+
     }//GEN-LAST:event_XMouseClicked
 
     private void minusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMouseClicked
