@@ -1,21 +1,8 @@
 package com.neet.GameState;
 
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import com.neet.Entity.Enemy;
-import com.neet.Entity.EnemyProjectile;
-import com.neet.Entity.HUD;
-import com.neet.Entity.Player;
-import com.neet.Entity.PlayerSave;
-import com.neet.Entity.Title;
-import com.neet.Entity.Enemies.Gazer;
-import com.neet.Entity.Enemies.GelPop;
+import com.neet.Entity.Enemies.Pterodactyl;
+import com.neet.Entity.Enemies.Turtle;
+import com.neet.Entity.*;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
@@ -26,6 +13,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+
 
 
 public class Level1BState extends GameState {
@@ -119,44 +107,44 @@ public class Level1BState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		GelPop gp;
-		Gazer g;
+		Turtle gp;
+		Pterodactyl g;
 		
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(750, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(900, 150);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(1320, 250);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(1570, 160);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(1590, 160);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(2600, 370);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(2620, 370);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle(tileMap, player);
 		gp.setPosition(2640, 370);
 		enemies.add(gp);
 		
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(904, 130);
 		enemies.add(g);
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(1080, 270);
 		enemies.add(g);
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(1200, 270);
 		enemies.add(g);
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(1704, 300);
 		enemies.add(g);
 		

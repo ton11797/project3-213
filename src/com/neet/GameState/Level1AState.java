@@ -1,7 +1,7 @@
 package com.neet.GameState;
 
-import com.neet.Entity.Enemies.Gazer;
-import com.neet.Entity.Enemies.GelPop;
+import com.neet.Entity.Enemies.Pterodactyl;
+import com.neet.Entity.Enemies.Turtle;
 import com.neet.Entity.*;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
@@ -46,7 +46,7 @@ public class Level1AState extends GameState {
 		// backgrounds
 		sky = new Background("Resource2/Backgrounds/bg.png", 0);
 		clouds = new Background("Resources/Backgrounds/clouds.gif", 0.5);
-
+		//mountains =new Background("Resources/Backgrounds/mountains.gif", 1);
 		
 		// tilemap
 		tileMap = new TileMap(35);
@@ -55,14 +55,14 @@ public class Level1AState extends GameState {
 		tileMap.setPosition(140, 0);
 		tileMap.setBounds(
 			tileMap.getWidth() - 1 * tileMap.getTileSize(),
-			tileMap.getHeight() - 2 * tileMap.getTileSize(),
+			tileMap.getHeight() + 1 *tileMap.getTileSize() ,
 			0, 0
 		);
 		tileMap.setTween(1);
 		
 		// player
 		player = new Player(tileMap);
-		player.setPosition(300, 100);
+		player.setPosition(80, 100);
 		player.setHealth(PlayerSave.getHealth());
 		player.setLives(PlayerSave.getLives());
 		player.setTime(PlayerSave.getTime());
@@ -90,11 +90,11 @@ public class Level1AState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		Turtle  gp;
+		Turtle gp;
 		Pterodactyl g;
 		
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(1300, 100);
+		gp.setPosition(350, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
 		gp.setPosition(1350, 100);
@@ -122,10 +122,10 @@ public class Level1AState extends GameState {
 		enemies.add(gp);
 		
 		g = new Pterodactyl(tileMap);
-		g.setPosition(2600, 100);
+		g.setPosition(300, 100);
 		enemies.add(g);
 		g = new Pterodactyl(tileMap);
-		g.setPosition(3500, 100);
+		g.setPosition(500, 100);
 		enemies.add(g);
 	}
 	
@@ -135,8 +135,8 @@ public class Level1AState extends GameState {
 		handleInput();
 		
 		// check if end of level event should start
-		System.out.println(player.getx());
-		if(player.getx() == 400 ) {
+		System.out.println(player.getx()+" "+player.gety());
+		if(player.getx() == 1400 ) {
 			eventFinish = blockInput = true;
 		}
 		
@@ -162,7 +162,7 @@ public class Level1AState extends GameState {
 		
 		// move backgrounds
 		clouds.setPosition(tileMap.getx(), tileMap.gety());
-		///mountains.setPosition(tileMap.getx(), tileMap.gety());
+		//mountains.setPosition(tileMap.getx(), tileMap.gety());
 		
 		// update player
 		player.update();
@@ -246,7 +246,7 @@ public class Level1AState extends GameState {
 	// reset level
 	private void reset() {
 		player.reset();
-		player.setPosition(300, 161);
+		player.setPosition(80, 161);
 		populateEnemies();
 		blockInput = true;
 		eventCount = 0;
