@@ -15,7 +15,7 @@ import javax.swing.UIManager;
  * @author User
  */
 public class OptionFrame extends javax.swing.JFrame {
-
+    private Pass s;
     Point point;
     
     
@@ -32,8 +32,8 @@ public class OptionFrame extends javax.swing.JFrame {
         }
     }
     
-    public OptionFrame() {
-        
+    public OptionFrame(Pass ss) {
+        s=ss;
         SetPreview(0);
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -292,6 +292,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
+        s.setValue(1);
         ModeGame.SetSpeed(SliderSpeed.getValue());
         this.dispose();
     }//GEN-LAST:event_XMouseClicked
@@ -338,13 +339,13 @@ public class OptionFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SetDefailtActionPerformed
 
-/*
+
     public static void main(String args[]) {
-        // Set the Nimbus look and feel 
+        // Set the Nimbus look and feel
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         // If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-        //  For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         
+        //  For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -363,14 +364,14 @@ public class OptionFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        //Create and display the form 
+        //Create and display the form
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OptionFrame().setVisible(true);
+                new OptionFrame(new Pass(0)).setVisible(true);
             }
         });
     }
-*/
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Mode;
     private javax.swing.JPanel PanelSet;
