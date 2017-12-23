@@ -2,6 +2,7 @@
 import ModeGame.ModeGame;
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 
 /*
@@ -37,6 +38,7 @@ public class OptionFrame extends javax.swing.JFrame {
         SetPreview(0);
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
+        //if(!CheatBox.isSelected())Command.setVisible(false);
     }
 
     /**
@@ -63,12 +65,14 @@ public class OptionFrame extends javax.swing.JFrame {
         SetCustom = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        Command = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         JAPPA = new javax.swing.JRadioButton();
         GIGA = new javax.swing.JRadioButton();
         MOJO = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        CheatBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.darkGray);
@@ -215,15 +219,32 @@ public class OptionFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
+        Command.setBackground(new java.awt.Color(204, 255, 102));
+        Command.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Command.setForeground(new java.awt.Color(255, 255, 255));
+        Command.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CommandActionPerformed(evt);
+            }
+        });
+        Command.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CommandKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Command, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addComponent(Command, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 204));
@@ -241,6 +262,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(JAPPA);
         JAPPA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JAPPA.setForeground(new java.awt.Color(255, 255, 255));
         JAPPA.setSelected(true);
         JAPPA.setText("JAPPA");
         JAPPA.setEnabled(false);
@@ -252,6 +274,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(GIGA);
         GIGA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GIGA.setForeground(new java.awt.Color(255, 255, 255));
         GIGA.setText("GIGA");
         GIGA.setEnabled(false);
         GIGA.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +285,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(MOJO);
         MOJO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        MOJO.setForeground(new java.awt.Color(255, 255, 255));
         MOJO.setText("MOJU");
         MOJO.setEnabled(false);
         MOJO.addActionListener(new java.awt.event.ActionListener() {
@@ -287,6 +311,16 @@ public class OptionFrame extends javax.swing.JFrame {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
+        CheatBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CheatBox.setForeground(new java.awt.Color(255, 255, 255));
+        CheatBox.setText("CHEAT MODE");
+        CheatBox.setToolTipText("");
+        CheatBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheatBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -302,24 +336,27 @@ public class OptionFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Mode, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JAPPA)
-                            .addGap(18, 18, 18)
-                            .addComponent(GIGA)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MOJO))
-                        .addComponent(SliderSpeed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(CheatBox)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Mode, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(JAPPA)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(GIGA)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(MOJO))
+                                .addComponent(SliderSpeed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -354,9 +391,11 @@ public class OptionFrame extends javax.swing.JFrame {
                     .addComponent(GIGA)
                     .addComponent(JAPPA)
                     .addComponent(MOJO))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
+                .addComponent(CheatBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -410,6 +449,11 @@ public class OptionFrame extends javax.swing.JFrame {
         SliderSpeed.setValue(20);
         Mode.setEnabled(false);
         SliderSpeed.setEnabled(false);
+        JAPPA.setEnabled(false);
+        MOJO.setEnabled(false);
+        GIGA.setEnabled(false);
+        
+        JAPPA.setSelected(true);
         PanelSet.setBackground(new Color(0,204,204));
         PanelSet1.setBackground(Color.DARK_GRAY);
         
@@ -429,6 +473,32 @@ public class OptionFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         ModeGame.SetCharacter(3);
     }//GEN-LAST:event_MOJOActionPerformed
+
+    private void CheatBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheatBoxActionPerformed
+        // TODO add your handling code here:
+        if(CheatBox.isSelected()){
+            Command.setVisible(true);
+            Command.setBackground(Color.ORANGE);
+        }
+        else{
+            Command.setText("");
+            Command.setVisible(false);
+        }
+    }//GEN-LAST:event_CheatBoxActionPerformed
+
+    private void CommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommandActionPerformed
+
+    }//GEN-LAST:event_CommandActionPerformed
+
+    private void CommandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommandKeyPressed
+        // TODO add your handling code here:
+        if(Command.getText().equals("No Damage")){
+            Command.setBackground(Color.GREEN);
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+                ModeGame.god = true ;
+        }
+        }
+    }//GEN-LAST:event_CommandKeyPressed
 
 /*
     public static void main(String args[]) {
@@ -464,6 +534,8 @@ public class OptionFrame extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheatBox;
+    private javax.swing.JTextField Command;
     private javax.swing.JRadioButton GIGA;
     private javax.swing.JRadioButton JAPPA;
     private javax.swing.JRadioButton MOJO;
