@@ -23,8 +23,8 @@ public final class ModeGame {
     }
     
     public static void SetSpeed(int i){
-        maxspeed = (i/50) *2.5 ;
-        if(maxspeed < 3) maxspeed = 0.5;
+        maxspeed =  (i/20)*2.5 ;
+        if(i < 10) maxspeed = 1;
     }
 
     

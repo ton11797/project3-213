@@ -134,6 +134,7 @@ public class OptionFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("SPEED");
 
+        SliderSpeed.setValue(20);
         SliderSpeed.setEnabled(false);
 
         PanelSet.setBackground(new java.awt.Color(0, 204, 204));
@@ -293,7 +294,7 @@ public class OptionFrame extends javax.swing.JFrame {
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
         s.setValue(1);
-        ModeGame.SetSpeed(SliderSpeed.getValue());
+        ModeGame.SetSpeed( SliderSpeed.getValue() );
         this.dispose();
     }//GEN-LAST:event_XMouseClicked
 
@@ -331,7 +332,7 @@ public class OptionFrame extends javax.swing.JFrame {
     private void SetDefailtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetDefailtActionPerformed
         // TODO add your handling code here:
         Mode.setSelectedIndex(1);
-        SliderSpeed.setValue(50);
+        SliderSpeed.setValue(20);
         Mode.setEnabled(false);
         SliderSpeed.setEnabled(false);
         PanelSet.setBackground(new Color(0,204,204));
