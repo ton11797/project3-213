@@ -31,13 +31,11 @@ public class GameStateManager {
 	}
 	
 	private void loadState(int state) {
-		if(state == MENUSTATE)
-			gameStates[state] = new MenuState(this);
-		else if(state == LEVEL1ASTATE)
+		if(state == LEVEL1ASTATE)
 			gameStates[state] = new Level1AState(this);
-		/*else if(state == LEVEL1BSTATE)
+		else if(state == LEVEL1BSTATE)
 			gameStates[state] = new Level1BState(this);
-		else if(state == LEVEL1CSTATE)
+		/*else if(state == LEVEL1CSTATE)
 			gameStates[state] = new Level1CState(this);*/
 	}
 	

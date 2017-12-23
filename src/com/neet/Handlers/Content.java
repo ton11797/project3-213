@@ -1,6 +1,5 @@
 package com.neet.Handlers;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 

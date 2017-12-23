@@ -47,12 +47,12 @@ public class Level1BState extends GameState {
 	public void init() {
 		
 		// backgrounds
-		temple = new Background("Resource2/Backgrounds/grass2.png", 0.5, 0);
+		temple = new Background("Resource2/Backgrounds/temple.gif", 0.5, 0);
 		
 		// tilemap
-		tileMap = new TileMap(30);
-		tileMap.loadTiles("Resources/Tilesets/ruinstileset.gif");
-		tileMap.loadMap("Resources/Maps/level1b.map");
+		tileMap = new TileMap(35);
+		tileMap.loadTiles("Resource2/Tilesets/");
+		tileMap.loadMap("Resource2/state2");
 		tileMap.setPosition(140, 0);
 		tileMap.setTween(1);
 		
@@ -153,7 +153,7 @@ public class Level1BState extends GameState {
 		
 		// check keys
 		handleInput();
-		
+		System.out.println(player.getx()+" "+player.gety());
 		// check if quake event should start
 		if(player.getx() > 2175 && !tileMap.isShaking()) {
 			eventQuake = blockInput = true;
@@ -167,7 +167,6 @@ public class Level1BState extends GameState {
 		// play events
 		if(eventStart) eventStart();
 		if(eventDead) eventDead();
-		if(eventQuake) eventQuake();
 		if(eventFinish) eventFinish();
 		
 		// move title and subtitle
@@ -275,103 +274,31 @@ public class Level1BState extends GameState {
 		subtitle = new Title(hageonText.getSubimage(0, 33, 91, 13));
 		subtitle.sety(85);
 	}
-	
+
 	// level started
 	private void eventStart() {
-		eventCount++;
-		if(eventCount == 1) {
-			tb.clear();
-			tb.add(new Rectangle(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-			tb.add(new Rectangle(0, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-			tb.add(new Rectangle(0, GamePanel.HEIGHT / 2, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
-			tb.add(new Rectangle(GamePanel.WIDTH / 2, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-		}
-		if(eventCount > 1 && eventCount < 60) {
-			tb.get(0).height -= 4;
-			tb.get(1).width -= 6;
-			tb.get(2).y += 4;
-			tb.get(3).x += 6;
-		}
-		if(eventCount == 30) title.begin();
-		if(eventCount == 60) {
-			eventStart = blockInput = false;
-			eventCount = 0;
-			subtitle.begin();
-			tb.clear();
-		}
+		eventStart = blockInput = false;
 	}
-	
+
 	// player has died
 	private void eventDead() {
-		eventCount++;
-		if(eventCount == 1) player.setDead();
-		if(eventCount == 60) {
-			tb.clear();
-			tb.add(new Rectangle(
-				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
+		if(player.getLives() == 0) {
+			gsm.setState(GameStateManager.MENUSTATE);
 		}
-		else if(eventCount > 60) {
-			tb.get(0).x -= 6;
-			tb.get(0).y -= 4;
-			tb.get(0).width += 12;
-			tb.get(0).height += 8;
-		}
-		if(eventCount >= 120) {
-			if(player.getLives() == 0) {
-				gsm.setState(GameStateManager.MENUSTATE);
-			}
-			else {
-				eventDead = blockInput = false;
-				eventCount = 0;
-				reset();
-			}
-		}
-	}
-	
-	// earthquake
-	private void eventQuake() {
-		eventCount++;
-		if(eventCount == 1) {
-			player.stop();
-			player.setPosition(2175, player.gety());
-		}
-		if(eventCount == 60) {
-			player.setEmote(Player.CONFUSED);
-		}
-		if(eventCount == 120) player.setEmote(Player.NONE);
-		if(eventCount == 150) tileMap.setShaking(true, 10);
-		if(eventCount == 180) player.setEmote(Player.SURPRISED);
-		if(eventCount == 300) {
-			player.setEmote(Player.NONE);
-			eventQuake = blockInput = false;
+		else {
+			eventDead = blockInput = false;
 			eventCount = 0;
+			player.loseLife();
+			reset();
 		}
 	}
-	
+
 	// finished level
 	private void eventFinish() {
-		eventCount++;
-		if(eventCount == 1) {
-			player.stop();
-		}
-		else if(eventCount == 120) {
-			tb.clear();
-			tb.add(new Rectangle(
-				GamePanel.WIDTH / 2, GamePanel.HEIGHT / 2, 0, 0));
-		}
-		else if(eventCount > 120) {
-			tb.get(0).x -= 6;
-			tb.get(0).y -= 4;
-			tb.get(0).width += 12;
-			tb.get(0).height += 8;
-		}
-		if(eventCount == 180) {
-			PlayerSave.setHealth(player.getHealth());
-			PlayerSave.setLives(player.getLives());
-			PlayerSave.setTime(player.getTime());
-			gsm.setState(GameStateManager.LEVEL1CSTATE);
-		}
-		
+		PlayerSave.setHealth(player.getHealth());
+		PlayerSave.setLives(player.getLives());
+		PlayerSave.setTime(player.getTime());
+		gsm.setState(GameStateManager.LEVEL1BSTATE);
 	}
 
 }

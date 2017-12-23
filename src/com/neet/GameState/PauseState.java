@@ -12,9 +12,9 @@ public class PauseState extends GameState {
 	private Font font;
 	
 	public PauseState(GameStateManager gsm) {
-		
+
 		super(gsm);
-		
+
 		// fonts
 		font = new Font("Century Gothic", Font.PLAIN, 14);
 		
@@ -36,10 +36,6 @@ public class PauseState extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(false);
-		if(Keys.isPressed(Keys.BUTTON1)) {
-			gsm.setPaused(false);
-			gsm.setState(GameStateManager.MENUSTATE);
-		}
 	}
 
 }

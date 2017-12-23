@@ -2,11 +2,11 @@
  * Created by Denice on 21/12/2560.
  */
 import com.neet.Main.GamePanel;
-import java.awt.event.WindowAdapter;
 import javax.swing.*;
 public class MainApplication {
     public static void main(String[] args) {
         boolean exit = false;
+        JFrame t;
         Pass start = new Pass(0);
         do {
             if(start.getValue() !=4) {
@@ -29,15 +29,12 @@ public class MainApplication {
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-//                start.setValue(0);
                 exit = true;
             } else if (start.getValue() == 2) {
                 start.setValue(0);
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new OptionFrame(start).setVisible(true);
-                    }
-                });
+                t = new OptionFrame(start);
+                t.setVisible(true);
+                start.setoF(t);
                 while (start.getValue() == 0) {
                     try {
                         Thread.sleep(100);

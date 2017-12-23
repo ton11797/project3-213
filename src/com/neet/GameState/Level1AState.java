@@ -16,20 +16,17 @@ public class Level1AState extends GameState {
 	
 	private Background sky;
 	private Background clouds;
-	private Background mountains;
-	
+
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
 	
 	private HUD hud;
-	private BufferedImage hageonText;
 	private Title title;
 	private Title subtitle;
 	
 	// events
 	private boolean blockInput = false;
-	private int eventCount = 0;
 	private boolean eventStart;
 	private ArrayList<Rectangle> tb;
 	private boolean eventFinish;
@@ -45,7 +42,6 @@ public class Level1AState extends GameState {
 		// backgrounds
 		sky = new Background("Resource2/Backgrounds/bg.png", 0);
 		clouds = new Background("Resources/Backgrounds/clouds.gif", 0.5);
-		//mountains =new Background("Resources/Backgrounds/mountains.gif", 1);
 		
 		// tilemap
 		tileMap = new TileMap(35);
@@ -160,7 +156,6 @@ public class Level1AState extends GameState {
 		
 		// move backgrounds
 		clouds.setPosition(tileMap.getx(), tileMap.gety());
-		//mountains.setPosition(tileMap.getx(), tileMap.gety());
 		
 		// update player
 		player.update();
@@ -243,7 +238,6 @@ public class Level1AState extends GameState {
 		player.setPosition(80, 161);
 		populateEnemies();
 		blockInput = true;
-		eventCount = 0;
 		tileMap.setShaking(false, 0);
 		eventStart = true;
 		eventStart();
@@ -261,7 +255,6 @@ public class Level1AState extends GameState {
 		}
 		else {
 			eventDead = blockInput = false;
-			eventCount = 0;
 			player.loseLife();
 			reset();
 		}

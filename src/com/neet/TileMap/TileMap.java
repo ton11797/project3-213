@@ -170,8 +170,6 @@ public class TileMap {
 				if(map[row][col] == 0) continue;
 				
 				int rc = map[row][col];
-				//int r = rc / numTilesAcross;
-				//int c = rc % numTilesAcross;
 				if(rc!=0){
 					g.drawImage(
 							tiles.get(rc-1).getImage(),

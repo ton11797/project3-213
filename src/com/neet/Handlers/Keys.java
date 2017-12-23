@@ -46,12 +46,6 @@ public class Keys {
 	public static boolean isPressed(int i) {
 		return keyState[i] && !prevKeyState[i];
 	}
-	
-	public static boolean anyKeyPress() {
-		for(int i = 0; i < NUM_KEYS; i++) {
-			if(keyState[i]) return true;
-		}
-		return false;
-	}
+
 	
 }
