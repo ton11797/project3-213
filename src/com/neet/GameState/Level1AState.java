@@ -21,7 +21,6 @@ public class Level1AState extends GameState {
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<EnemyProjectile> eprojectiles;
 	
 	private HUD hud;
 	private BufferedImage hageonText;
@@ -69,7 +68,6 @@ public class Level1AState extends GameState {
 		
 		// enemies
 		enemies = new ArrayList<Enemy>();
-		eprojectiles = new ArrayList<EnemyProjectile>();
 		populateEnemies();
 		
 		
@@ -202,11 +200,7 @@ public class Level1AState extends GameState {
 			enemies.get(i).draw(g);
 		}
 		
-		// draw enemy projectiles
-		for(int i = 0; i < eprojectiles.size(); i++) {
-			eprojectiles.get(i).draw(g);
-		}
-		
+
 		// draw player
 		player.draw(g);
 		

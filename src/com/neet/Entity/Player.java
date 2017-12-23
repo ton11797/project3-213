@@ -152,7 +152,6 @@ public class Player extends MapObject {
 	}
 	
 	public int getHealth() { return health; }
-	public int getMaxHealth() { return maxHealth; }
 	
 	public void setEmote(int i) {
 		emote = i;
@@ -207,7 +206,9 @@ public class Player extends MapObject {
 	public void hit(int damage) {
 		if(flinching) return;
 		stop();
-		health -= damage;
+		if(!ModeGame.god) {
+			health -= damage;
+		}
 		if(health < 0) health = 0;
 		flinching = true;
 		flinchCount = 0;
@@ -437,11 +438,6 @@ public class Player extends MapObject {
 		else if(dy > 0) {
 			if(currentAction != FALLING) {
 				setAnimation(FALLING);
-			}
-		}
-		else if(dashing && (left || right)) {
-			if(currentAction != DASHING) {
-				setAnimation(DASHING);
 			}
 		}
 		else if(left || right) {
