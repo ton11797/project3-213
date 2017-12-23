@@ -23,10 +23,8 @@ public class Player extends MapObject {
 	private boolean knockback;
 	private boolean flinching;
 	private long flinchCount;
-	private int score;
 	private boolean doubleJump;
 	private boolean alreadyDoubleJump;
-	private double doubleJumpStart;
 	private long time;
 	
 	// actions
@@ -99,7 +97,6 @@ public class Player extends MapObject {
 		maxFallSpeed = 4.0;
 		jumpStart = -4.8;
 		stopJumpSpeed = 0.3;
-		doubleJumpStart = -3;
 		
 		damage = 2;
 		chargeDamage = 1;
@@ -188,7 +185,6 @@ public class Player extends MapObject {
 			dashing = true;
 		}
 	}
-	public boolean isDashing() { return dashing; }
 	
 	public void setDead() {
 		health = 0;
@@ -207,12 +203,6 @@ public class Player extends MapObject {
 	public void gainLife() { lives++; }
 	public void loseLife() { lives--; }
 	public int getLives() { return lives; }
-	
-	public void increaseScore(int score) {
-		this.score += score; 
-	}
-	
-	public int getScore() { return score; }
 	
 	public void hit(int damage) {
 		if(flinching) return;
