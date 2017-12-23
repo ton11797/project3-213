@@ -186,9 +186,6 @@ public abstract class MapObject {
 	public int gety() { return (int)y; }
 	public int getWidth() { return width; }
 	public int getHeight() { return height; }
-	public int getCWidth() { return cwidth; }
-	public int getCHeight() { return cheight; }
-	public boolean isFacingRight() { return facingRight; }
 	
 	public void setPosition(double x, double y) {
 		this.x = x;

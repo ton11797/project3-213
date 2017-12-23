@@ -23,7 +23,6 @@ public class Level1BState extends GameState {
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<EnemyProjectile> eprojectiles;
 
 	
 	private HUD hud;
@@ -66,7 +65,6 @@ public class Level1BState extends GameState {
 		
 		// enemies
 		enemies = new ArrayList<Enemy>();
-		eprojectiles = new ArrayList<EnemyProjectile>();
 		populateEnemies();
 		
 		
@@ -207,20 +205,7 @@ public class Level1BState extends GameState {
 				i--;
 			}
 		}
-		
-		// update enemy projectiles
-		for(int i = 0; i < eprojectiles.size(); i++) {
-			EnemyProjectile ep = eprojectiles.get(i);
-			ep.update();
-			if(ep.shouldRemove()) {
-				eprojectiles.remove(i);
-				i--;
-			}
-		}
-		
 
-		
-		
 	}
 	
 	public void draw(Graphics2D g) {
@@ -235,12 +220,6 @@ public class Level1BState extends GameState {
 		for(int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).draw(g);
 		}
-		
-		// draw enemy projectiles
-		for(int i = 0; i < eprojectiles.size(); i++) {
-			eprojectiles.get(i).draw(g);
-		}
-
 		
 		// draw player
 		player.draw(g);

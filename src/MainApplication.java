@@ -9,10 +9,12 @@ public class MainApplication {
         boolean exit = false;
         Pass start = new Pass(0);
         do {
-            JFrame frame = new GUI(start);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-            while (start.getValue() == 0) {
+            if(start.getValue() !=4) {
+                JFrame frame = new GUI(start);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
+            }
+            while (start.getValue() == 0 ||start.getValue() ==4) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -27,7 +29,7 @@ public class MainApplication {
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-                start.setValue(0);
+//                start.setValue(0);
                 exit = true;
             } else if (start.getValue() == 2) {
                 start.setValue(0);
@@ -43,7 +45,7 @@ public class MainApplication {
                         e.printStackTrace();
                     }
                 }
-                start.setValue(0);
+                start.setValue(4);
             } else {
                 exit = true;
             }

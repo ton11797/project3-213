@@ -49,6 +49,7 @@ public class OptionFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         TabBar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -63,6 +64,11 @@ public class OptionFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        JAPPA = new javax.swing.JRadioButton();
+        GIGA = new javax.swing.JRadioButton();
+        MOJO = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(java.awt.Color.darkGray);
@@ -117,8 +123,8 @@ public class OptionFrame extends javax.swing.JFrame {
 
         Mode.setBackground(new java.awt.Color(0, 204, 204));
         Mode.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Mode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EASY", "NORMAL", "HARD" }));
-        Mode.setSelectedIndex(1);
+        Mode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VERY EASY", "EASY", "NORMAL", "HARD", "VERY HARD" }));
+        Mode.setSelectedIndex(2);
         Mode.setEnabled(false);
         Mode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +140,7 @@ public class OptionFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("SPEED");
 
+        SliderSpeed.setValue(20);
         SliderSpeed.setEnabled(false);
 
         PanelSet.setBackground(new java.awt.Color(0, 204, 204));
@@ -232,6 +239,54 @@ public class OptionFrame extends javax.swing.JFrame {
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
+        buttonGroup1.add(JAPPA);
+        JAPPA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JAPPA.setSelected(true);
+        JAPPA.setText("JAPPA");
+        JAPPA.setEnabled(false);
+        JAPPA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JAPPAActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(GIGA);
+        GIGA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        GIGA.setText("GIGA");
+        GIGA.setEnabled(false);
+        GIGA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GIGAActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(MOJO);
+        MOJO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        MOJO.setText("MOJU");
+        MOJO.setEnabled(false);
+        MOJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MOJOActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("CHARACTER");
+
+        jPanel5.setBackground(new java.awt.Color(0, 204, 204));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 6, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,13 +304,22 @@ public class OptionFrame extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Mode, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
-                    .addComponent(SliderSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(JAPPA)
+                            .addGap(18, 18, 18)
+                            .addComponent(GIGA)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MOJO))
+                        .addComponent(SliderSpeed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -273,17 +337,26 @@ public class OptionFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Mode, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(SliderSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(76, 76, 76)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(SliderSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GIGA)
+                    .addComponent(JAPPA)
+                    .addComponent(MOJO))
+                .addGap(35, 35, 35)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,7 +366,7 @@ public class OptionFrame extends javax.swing.JFrame {
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
         s.setValue(1);
-        ModeGame.SetSpeed(SliderSpeed.getValue());
+        ModeGame.SetSpeed( SliderSpeed.getValue() );
         this.dispose();
     }//GEN-LAST:event_XMouseClicked
 
@@ -322,6 +395,9 @@ public class OptionFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         Mode.setEnabled(true);
         SliderSpeed.setEnabled(true);
+        JAPPA.setEnabled(true);
+        MOJO.setEnabled(true);
+        GIGA.setEnabled(true);
         PanelSet.setBackground(new Color(0,204,204));
         PanelSet1.setBackground(new Color(0,204,204));
         PanelSet.setBackground(Color.DARK_GRAY);
@@ -331,13 +407,28 @@ public class OptionFrame extends javax.swing.JFrame {
     private void SetDefailtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetDefailtActionPerformed
         // TODO add your handling code here:
         Mode.setSelectedIndex(1);
-        SliderSpeed.setValue(50);
+        SliderSpeed.setValue(20);
         Mode.setEnabled(false);
         SliderSpeed.setEnabled(false);
         PanelSet.setBackground(new Color(0,204,204));
         PanelSet1.setBackground(Color.DARK_GRAY);
         
     }//GEN-LAST:event_SetDefailtActionPerformed
+
+    private void GIGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GIGAActionPerformed
+        // TODO add your handling code here:
+        ModeGame.SetCharacter(1);
+    }//GEN-LAST:event_GIGAActionPerformed
+
+    private void JAPPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAPPAActionPerformed
+        // TODO add your handling code here:
+        ModeGame.SetCharacter(2);
+    }//GEN-LAST:event_JAPPAActionPerformed
+
+    private void MOJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MOJOActionPerformed
+        // TODO add your handling code here:
+        ModeGame.SetCharacter(3);
+    }//GEN-LAST:event_MOJOActionPerformed
 
 /*
     public static void main(String args[]) {
@@ -373,6 +464,9 @@ public class OptionFrame extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton GIGA;
+    private javax.swing.JRadioButton JAPPA;
+    private javax.swing.JRadioButton MOJO;
     private javax.swing.JComboBox<String> Mode;
     private javax.swing.JPanel PanelSet;
     private javax.swing.JPanel PanelSet1;
@@ -381,12 +475,15 @@ public class OptionFrame extends javax.swing.JFrame {
     private javax.swing.JSlider SliderSpeed;
     private javax.swing.JPanel TabBar;
     private javax.swing.JLabel X;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
