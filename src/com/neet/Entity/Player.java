@@ -1,15 +1,13 @@
 package com.neet.Entity;
 
 import ModeGame.ModeGame;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import com.neet.TileMap.TileMap;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import com.neet.TileMap.TileMap;
 
 public class Player extends MapObject {
 	
@@ -316,6 +314,7 @@ public class Player extends MapObject {
 			if(dy < 0 && !jumping) dy += stopJumpSpeed;
 			if(dy > maxFallSpeed) dy = maxFallSpeed;
 		}
+
 		
 	}
 	
