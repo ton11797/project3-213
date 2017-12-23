@@ -56,10 +56,10 @@ dirtLedgeRight.png 1
 dirtLeft.png 1
 dirtMid.png 1
 dirtRight.png 1
-door_closedMid.png 1
-door_closedTop.png 1
-door_openMid.png 1
-door_openTop.png 1
+door_closedMid.png 0
+door_closedTop.png 0
+door_openMid.png 0
+door_openTop.png 0
 fence.png 1
 fenceBroken.png 1
 grass.png 1
