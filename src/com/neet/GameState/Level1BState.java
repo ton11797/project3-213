@@ -16,7 +16,6 @@ import com.neet.Entity.PlayerSave;
 import com.neet.Entity.Title;
 import com.neet.Entity.Enemies.Gazer;
 import com.neet.Entity.Enemies.GelPop;
-import com.neet.Entity.Enemies.Tengu;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
@@ -116,7 +115,6 @@ public class Level1BState extends GameState {
 		enemies.clear();
 		GelPop gp;
 		Gazer g;
-		Tengu t;
 		
 		gp = new GelPop(tileMap, player);
 		gp.setPosition(750, 100);
@@ -156,18 +154,6 @@ public class Level1BState extends GameState {
 		g.setPosition(1704, 300);
 		enemies.add(g);
 		
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(1900, 580);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2330, 550);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2400, 490);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2457, 430);
-		enemies.add(t);
 		
 	}
 	

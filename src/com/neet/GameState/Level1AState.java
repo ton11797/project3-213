@@ -15,7 +15,7 @@ import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
 import com.neet.Entity.Title;
 import com.neet.Entity.Enemies.Gazer;
-import com.neet.Entity.Enemies.GelPop;
+import com.neet.Entity.Enemies.Turtle;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
@@ -122,37 +122,34 @@ public class Level1AState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		GelPop gp;
+		Turtle  gp;
 		Gazer g;
 		
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1300, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1320, 100);
+		gp = new Turtle (tileMap, player);
+		gp.setPosition(1350, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1340, 100);
+		gp = new Turtle (tileMap, player);
+		gp.setPosition(1400, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1660, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1680, 100);
-		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1700, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2177, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2960, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2980, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(3000, 100);
 		enemies.add(gp);
 		

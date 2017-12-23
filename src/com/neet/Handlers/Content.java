@@ -12,8 +12,7 @@ import javax.imageio.ImageIO;
 
 public class Content {
 	
-	public static BufferedImage[][] Gazer = load("Resources/Sprites/Enemies/Gazer.gif", 39, 20);
-	public static BufferedImage[][] Tengu = load("Resources/Sprites/Enemies/Tengu.gif", 30, 30);
+	public static BufferedImage[][] Gazer =  load("Resources/Sprites/Enemies/pterodactyl-1.png", 504/4, 452/4);
 	public static BufferedImage[][] GelPop = load("Resources/Sprites/Enemies/turtle-1.png", 60, 40);
 	
 	public static BufferedImage[][] load(String s, int w, int h) {

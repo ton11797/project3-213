@@ -107,8 +107,8 @@ public class Player extends MapObject {
 		
 		facingRight = true;
 		
-		lives = 3;
-		health = maxHealth = 5;
+		lives = 10;
+		health = maxHealth = 10;
 		
 		// load sprites
 		try {
@@ -296,7 +296,6 @@ public class Player extends MapObject {
 		
 		// jumping
 		if(jumping && !falling) {
-			//sfx.get("jump").play();
 			dy = -5.5;
 			//dy = jumpStart;
 			falling = true;
@@ -304,7 +303,6 @@ public class Player extends MapObject {
 		
 		if(doubleJump) {
 			dy = -5.5;
-			//dy = doubleJumpStart;
 			alreadyDoubleJump = true;
 			doubleJump = false;
 		}
@@ -397,9 +395,6 @@ public class Player extends MapObject {
 					if(e.intersects(cr)) {
 						e.hit(chargeDamage);
 					}
-					/*if(e.intersects(this)) {
-						e.hit(chargeDamage);
-					}*/
 				}
 			}
 			
