@@ -97,10 +97,10 @@ public class Level1AState extends GameState {
 		gp.setPosition(350, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(1350, 100);
+		gp.setPosition(550, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(1400, 100);
+		gp.setPosition(560, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
 		gp.setPosition(1660, 100);
