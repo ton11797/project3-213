@@ -339,7 +339,7 @@ public class OptionFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SetDefailtActionPerformed
 
-
+/*
     public static void main(String args[]) {
         // Set the Nimbus look and feel
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -370,7 +370,7 @@ public class OptionFrame extends javax.swing.JFrame {
                 new OptionFrame(new Pass(0)).setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Mode;
