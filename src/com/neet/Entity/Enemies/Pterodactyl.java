@@ -8,7 +8,7 @@ import com.neet.Handlers.Content;
 import com.neet.TileMap.TileMap;
 
 
-public class Gazer extends Enemy {
+public class Pterodactyl extends Enemy {
 	
 	private BufferedImage[] idleSprites;
 	
@@ -16,16 +16,16 @@ public class Gazer extends Enemy {
 	private double a;
 	private double b;
 	
-	public Gazer(TileMap tm) {
+	public Pterodactyl(TileMap tm) {
 		
 		super(tm);
 		
 		health = maxHealth = 2;
 		
-		width = 39;
-		height = 20;
-		cwidth = 25;
-		cheight = 15;
+		width = 504/8;
+		height = 452/8;
+		cwidth = 504/10;
+		cheight = 452/10;
 		
 		damage = 1;
 		moveSpeed = 5;

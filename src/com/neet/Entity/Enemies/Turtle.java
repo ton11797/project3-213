@@ -1,5 +1,6 @@
 package com.neet.Entity.Enemies;
 
+import ModeGame.ModeGame;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -9,13 +10,13 @@ import com.neet.Handlers.Content;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.TileMap;
 
-public class GelPop extends Enemy {
+public class Turtle extends Enemy {
 	
 	private BufferedImage[] sprites;
 	private Player player;
 	private boolean active;
 	
-	public GelPop(TileMap tm, Player p) {
+	public Turtle (TileMap tm, Player p) {
 		
 		super(tm);
 		player = p;
@@ -25,9 +26,9 @@ public class GelPop extends Enemy {
 		width = 30;
 		height = 25;
 		cwidth = 20;
-		cheight = 18;
+		cheight = 15;
 		
-		damage = 1;
+		damage = ModeGame.damage;
 		moveSpeed = 0.8;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;

@@ -90,44 +90,41 @@ public class Level1AState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		GelPop gp;
-		Gazer g;
+		Turtle  gp;
+		Pterodactyl g;
 		
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1300, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1320, 100);
+		gp = new Turtle (tileMap, player);
+		gp.setPosition(1350, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1340, 100);
+		gp = new Turtle (tileMap, player);
+		gp.setPosition(1400, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1660, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
-		gp.setPosition(1680, 100);
-		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(1700, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2177, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2960, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(2980, 100);
 		enemies.add(gp);
-		gp = new GelPop(tileMap, player);
+		gp = new Turtle (tileMap, player);
 		gp.setPosition(3000, 100);
 		enemies.add(gp);
 		
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(2600, 100);
 		enemies.add(g);
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(3500, 100);
 		enemies.add(g);
 	}

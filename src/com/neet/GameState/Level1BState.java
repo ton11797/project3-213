@@ -1,10 +1,21 @@
 package com.neet.GameState;
 
-import com.neet.Audio.JukeBox;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+import com.neet.Entity.Enemy;
+import com.neet.Entity.EnemyProjectile;
+import com.neet.Entity.HUD;
+import com.neet.Entity.Player;
+import com.neet.Entity.PlayerSave;
+import com.neet.Entity.Title;
 import com.neet.Entity.Enemies.Gazer;
 import com.neet.Entity.Enemies.GelPop;
-import com.neet.Entity.Enemies.Tengu;
-import com.neet.Entity.*;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
@@ -110,7 +121,6 @@ public class Level1BState extends GameState {
 		enemies.clear();
 		GelPop gp;
 		Gazer g;
-		Tengu t;
 		
 		gp = new GelPop(tileMap, player);
 		gp.setPosition(750, 100);
@@ -150,18 +160,6 @@ public class Level1BState extends GameState {
 		g.setPosition(1704, 300);
 		enemies.add(g);
 		
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(1900, 580);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2330, 550);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2400, 490);
-		enemies.add(t);
-		t = new Tengu(tileMap, player, enemies);
-		t.setPosition(2457, 430);
-		enemies.add(t);
 		
 	}
 	
@@ -387,7 +385,6 @@ public class Level1BState extends GameState {
 	private void eventFinish() {
 		eventCount++;
 		if(eventCount == 1) {
-			JukeBox.play("teleport");
 			player.stop();
 		}
 		else if(eventCount == 120) {
@@ -400,7 +397,6 @@ public class Level1BState extends GameState {
 			tb.get(0).y -= 4;
 			tb.get(0).width += 12;
 			tb.get(0).height += 8;
-			JukeBox.stop("teleport");
 		}
 		if(eventCount == 180) {
 			PlayerSave.setHealth(player.getHealth());

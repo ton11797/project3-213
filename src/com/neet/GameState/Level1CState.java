@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import com.neet.Audio.JukeBox;
 import com.neet.Entity.Enemy;
 import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
@@ -83,14 +82,6 @@ public class Level1CState extends GameState {
 		tb = new ArrayList<Rectangle>();
 		eventStart();
 		
-		// sfx
-		JukeBox.load("/SFX/teleport.mp3", "teleport");
-		JukeBox.load("/SFX/explode.mp3", "explode");
-		JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
-		
-		// music
-		JukeBox.load("/Music/level1boss.mp3", "level1boss");
-		JukeBox.load("/Music/fanfare.mp3", "fanfare");
 		
 	}
 	
@@ -218,7 +209,6 @@ public class Level1CState extends GameState {
 			tb.add(new Rectangle(0, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
 			tb.add(new Rectangle(0, GamePanel.HEIGHT / 2, GamePanel.WIDTH, GamePanel.HEIGHT / 2));
 			tb.add(new Rectangle(GamePanel.WIDTH / 2, 0, GamePanel.WIDTH / 2, GamePanel.HEIGHT));
-			JukeBox.stop("level1");
 		}
 		if(eventCount > 1 && eventCount < 60) {
 			tb.get(0).height -= 4;
@@ -309,12 +299,7 @@ public class Level1CState extends GameState {
 		}
 		if(eventCount == 362) {
 			flash = false;
-			JukeBox.loop(
-				"level1boss",
-				0,
-				60000,
-				JukeBox.getFrames("level1boss") - 4000
-			);
+
 		}
 		if(eventCount == 420) {
 			eventPortal = blockInput = false;
@@ -328,14 +313,11 @@ public class Level1CState extends GameState {
 		eventCount++;
 		if(eventCount == 1) {
 			player.stop();
-			JukeBox.stop("level1boss");
 			enemies.clear();
 		}
 		if(eventCount <= 120 && eventCount % 15 == 0) {
-			JukeBox.play("explode");
 		}
 		if(eventCount == 180) {
-			JukeBox.play("fanfare");
 		}
 		if(eventCount == 390) {
 			eventBossDead = false;

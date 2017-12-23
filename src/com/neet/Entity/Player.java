@@ -1,13 +1,15 @@
 package com.neet.Entity;
 
-import com.neet.Audio.JukeBox;
-import com.neet.TileMap.TileMap;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
+import ModeGame.ModeGame;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+import com.neet.TileMap.TileMap;
 
 public class Player extends MapObject {
 	
@@ -93,7 +95,7 @@ public class Player extends MapObject {
 		cheight = 38;
 		
 		moveSpeed = 1.0;
-		maxSpeed =  2.5;
+		maxSpeed =  ModeGame.maxspeed;
 		stopSpeed = 10.5;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;
@@ -106,8 +108,8 @@ public class Player extends MapObject {
 		
 		facingRight = true;
 		
-		lives = 3;
-		health = maxHealth = 5;
+		lives = 10;
+		health = maxHealth = 10;
 		
 		// load sprites
 		try {
@@ -179,7 +181,6 @@ public class Player extends MapObject {
 		if(knockback) return;
 		if(!attacking && !upattacking && !charging) {
 			charging = true;
-			JukeBox.play("playercharge");
 			chargingTick = 0;
 		}
 	}
@@ -217,7 +218,6 @@ public class Player extends MapObject {
 	
 	public void hit(int damage) {
 		if(flinching) return;
-		JukeBox.play("playerhit");
 		stop();
 		health -= damage;
 		if(health < 0) health = 0;
@@ -297,19 +297,15 @@ public class Player extends MapObject {
 		
 		// jumping
 		if(jumping && !falling) {
-			//sfx.get("jump").play();
 			dy = -5.5;
 			//dy = jumpStart;
 			falling = true;
-			JukeBox.play("playerjump");
 		}
 		
 		if(doubleJump) {
 			dy = -5.5;
-			//dy = doubleJumpStart;
 			alreadyDoubleJump = true;
 			doubleJump = false;
-			JukeBox.play("playerjump");
 		}
 		
 		if(!falling) alreadyDoubleJump = false;
@@ -344,7 +340,6 @@ public class Player extends MapObject {
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 		if(isFalling && !falling) {
-			JukeBox.play("playerlands");
 		}
 		if(dx == 0) x = (int)x;
 		
@@ -402,9 +397,6 @@ public class Player extends MapObject {
 					if(e.intersects(cr)) {
 						e.hit(chargeDamage);
 					}
-					/*if(e.intersects(this)) {
-						e.hit(chargeDamage);
-					}*/
 				}
 			}
 			
@@ -414,7 +406,6 @@ public class Player extends MapObject {
 			}
 			
 			if(e.isDead()) {
-				JukeBox.play("explode", 2000);
 			}
 			
 		}
@@ -432,7 +423,6 @@ public class Player extends MapObject {
 		}
 		else if(upattacking) {
 			if(currentAction != UPATTACKING) {
-				JukeBox.play("playerattack");
 				setAnimation(UPATTACKING);
 				aur.x = (int)x - 15;
 				aur.y = (int)y - 50;
@@ -440,7 +430,6 @@ public class Player extends MapObject {
 		}
 		else if(attacking) {
 			if(currentAction != ATTACKING) {
-				JukeBox.play("playerattack");
 				setAnimation(ATTACKING);
 				ar.y = (int)y - 6;
 				if(facingRight) ar.x = (int)x + 10;
