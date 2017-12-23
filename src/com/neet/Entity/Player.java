@@ -1,5 +1,6 @@
 package com.neet.Entity;
 
+import ModeGame.ModeGame;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -94,7 +95,7 @@ public class Player extends MapObject {
 		cheight = 38;
 		
 		moveSpeed = 1.0;
-		maxSpeed =  2.5;
+		maxSpeed =  ModeGame.maxspeed;
 		stopSpeed = 10.5;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;

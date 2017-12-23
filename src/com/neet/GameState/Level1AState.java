@@ -14,7 +14,7 @@ import com.neet.Entity.HUD;
 import com.neet.Entity.Player;
 import com.neet.Entity.PlayerSave;
 import com.neet.Entity.Title;
-import com.neet.Entity.Enemies.Gazer;
+import com.neet.Entity.Enemies.Pterodactyl;
 import com.neet.Entity.Enemies.Turtle;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
@@ -123,7 +123,7 @@ public class Level1AState extends GameState {
 	private void populateEnemies() {
 		enemies.clear();
 		Turtle  gp;
-		Gazer g;
+		Pterodactyl g;
 		
 		gp = new Turtle (tileMap, player);
 		gp.setPosition(1300, 100);
@@ -153,10 +153,10 @@ public class Level1AState extends GameState {
 		gp.setPosition(3000, 100);
 		enemies.add(gp);
 		
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(2600, 100);
 		enemies.add(g);
-		g = new Gazer(tileMap);
+		g = new Pterodactyl(tileMap);
 		g.setPosition(3500, 100);
 		enemies.add(g);
 	}

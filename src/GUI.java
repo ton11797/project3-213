@@ -1,5 +1,7 @@
 
 import java.awt.Point;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,11 +15,26 @@ import java.awt.Point;
  */
 public class GUI extends javax.swing.JFrame {
     private Pass s;
-    /**
-     * Creates new form GUI
-     */
+    
+    
+    
+        public void SetPreview(int i) {
+        String type1 ="" ,type2 = "";
+        if(i == 0){type1 = "nimbus";  type2 = "Nimbus" ;}
+        if(i == 1){type1 = "metal"; type2 =  "Metal";}
+        
+        try {
+            
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf."+ type1 +"."+ type2 + "LookAndFeel");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
     public GUI(Pass in) {
         s = in;
+        SetPreview(0);
         initComponents();
     }
 
@@ -110,6 +127,11 @@ public class GUI extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("OPTION");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(java.awt.Color.orange);
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -222,6 +244,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         s.setValue(1);
+        this.dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -229,6 +252,12 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        s.setValue(2);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

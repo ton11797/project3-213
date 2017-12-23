@@ -1,5 +1,6 @@
 package com.neet.Entity.Enemies;
 
+import ModeGame.ModeGame;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -27,7 +28,7 @@ public class Turtle extends Enemy {
 		cwidth = 20;
 		cheight = 15;
 		
-		damage = 1;
+		damage = ModeGame.damage;
 		moveSpeed = 0.8;
 		fallSpeed = 0.15;
 		maxFallSpeed = 4.0;
