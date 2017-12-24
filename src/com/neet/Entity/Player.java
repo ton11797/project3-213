@@ -201,7 +201,8 @@ public class Player extends MapObject {
 	
 	public void hit(int damage) {
 		if(flinching) return;
-		stop();
+		if(!ModeGame.immortal){
+                stop();
 		if(!ModeGame.god) {
 			health -= damage;
 		}
@@ -214,6 +215,7 @@ public class Player extends MapObject {
 		knockback = true;
 		falling = true;
 		jumping = false;
+        }
 	}
 	
 	public void reset() {
@@ -237,7 +239,6 @@ public class Player extends MapObject {
 		}
 		
 		double maxSpeed = this.maxSpeed;
-		if(dashing) maxSpeed *= 1.75;
 		
 		// movement
 		if(left) {
@@ -283,7 +284,6 @@ public class Player extends MapObject {
 		// jumping
 		if(jumping && !falling) {
 			dy = -5.5;
-			//dy = jumpStart;
 			falling = true;
 		}
 		

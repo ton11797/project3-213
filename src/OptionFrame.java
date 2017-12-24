@@ -38,7 +38,6 @@ public class OptionFrame extends javax.swing.JFrame {
         SetPreview(0);
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
-        //if(!CheatBox.isSelected())Command.setVisible(false);
     }
 
     /**
@@ -219,9 +218,11 @@ public class OptionFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
-        Command.setBackground(new java.awt.Color(204, 255, 102));
+        Command.setBackground(new java.awt.Color(0, 204, 204));
         Command.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Command.setForeground(new java.awt.Color(255, 255, 255));
+        Command.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Command.setEnabled(false);
         Command.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CommandActionPerformed(evt);
@@ -478,11 +479,14 @@ public class OptionFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(CheatBox.isSelected()){
             Command.setVisible(true);
+            Command.setEnabled(true);
             Command.setBackground(Color.ORANGE);
         }
         else{
             Command.setText("");
             Command.setVisible(false);
+            ModeGame.god = false;
+            ModeGame.immortal = false ;
         }
     }//GEN-LAST:event_CheatBoxActionPerformed
 
@@ -492,12 +496,25 @@ public class OptionFrame extends javax.swing.JFrame {
 
     private void CommandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommandKeyPressed
         // TODO add your handling code here:
-        if(Command.getText().equals("No Damage")){
-            Command.setBackground(Color.GREEN);
+        
         if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+            
+            if(Command.getText().equals("No Damage")){
+                Command.setBackground(Color.GREEN); 
                 ModeGame.god = true ;
+            }
+            
+            if(Command.getText().equals("Immortal")){
+                Command.setBackground(Color.GREEN);
+                ModeGame.immortal = true ;
+            }
+            
+            else {
+                Command.setBackground(Color.red);
+            }
+               
         }
-        }
+
     }//GEN-LAST:event_CommandKeyPressed
 
 /*
