@@ -5,6 +5,9 @@ import javax.swing.*;
 
 import java.awt.Point;
 import javax.swing.UIManager;
+import ModeGame.ModeGame;
+import java.awt.event.KeyEvent; 
+import com.neet.Main.GamePanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,10 +32,9 @@ public class GUI extends JFrame {
             ex.printStackTrace();
         }
     }
-    Pass s;
     
     Point point;
-
+    boolean Start = false;
     
     public GUI() {
 
@@ -78,6 +80,7 @@ public class GUI extends JFrame {
         Command = new javax.swing.JTextField();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        Game = new javax.swing.JFrame();
         TabBar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         minus = new javax.swing.JLabel();
@@ -102,7 +105,7 @@ public class GUI extends JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\how play.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how play.png"))); // NOI18N
 
         X1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         X1.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,7 +171,7 @@ public class GUI extends JFrame {
 
         CheatBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CheatBox.setForeground(new java.awt.Color(255, 255, 255));
-        CheatBox.setText("CHEAT MODE");
+        CheatBox.setText("CHEAT COMMAND");
         CheatBox.setToolTipText("");
         CheatBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,6 +453,13 @@ public class GUI extends JFrame {
                 .addGap(0, 43, Short.MAX_VALUE))
         );
 
+        Game.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GameKeyPressed(evt);
+            }
+        });
+        Game.getContentPane().setLayout(new java.awt.CardLayout());
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -585,7 +595,7 @@ public class GUI extends JFrame {
                         .addGap(29, 29, 29))))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\logpjap.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/logpjap.png"))); // NOI18N
 
         javax.swing.GroupLayout MainFramesLayout = new javax.swing.GroupLayout(MainFrames);
         MainFrames.setLayout(MainFramesLayout);
@@ -633,6 +643,8 @@ public class GUI extends JFrame {
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
         this.dispose();
+        HowToPlay.dispose();
+        Option.dispose();
 
     }//GEN-LAST:event_XMouseClicked
 
@@ -660,22 +672,28 @@ public class GUI extends JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //s.setValue(3);
         this.dispose();
+        HowToPlay.dispose();
+        Option.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
- 
-        this.dispose();
+                this.hide();
 
-
+                Game.add(new GamePanel());
+                Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Game.setResizable(false);
+                Game.pack();
+                Game.setLocationRelativeTo(null);
+                Game.setVisible(true);
+                Start = true;
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
   
-        //this.dispose();
                 Option.setVisible(true);
                 Option.pack();
                 Option.setLocationRelativeTo(null);
@@ -736,8 +754,7 @@ public class GUI extends JFrame {
         else{
             Command.setText("");
             Command.setVisible(false);
-            ModeGame.god = false;
-            ModeGame.immortal = false ;
+            ModeGame.ResetCheat();
         }
     }//GEN-LAST:event_CheatBoxActionPerformed
 
@@ -806,24 +823,32 @@ public class GUI extends JFrame {
     private void CommandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommandKeyPressed
         // TODO add your handling code here:
 
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            if(Command.getText().equals("No Damage")){
+            if (Command.getText().equals("iron")) {
                 Command.setBackground(Color.GREEN);
-                ModeGame.god = true ;
-            }
-
-            if(Command.getText().equals("Immortal")){
+                ModeGame.iron = true;
+            } else if (Command.getText().equals("invisible")) {
                 Command.setBackground(Color.GREEN);
-                ModeGame.immortal = true ;
-            }
-
-            else {
+                ModeGame.invisible = true;
+            } else if (Command.getText().equals("god")) {
+                Command.setBackground(Color.GREEN);
+                ModeGame.GodMode();
+            } else {
                 Command.setBackground(Color.red);
             }
 
         }
     }//GEN-LAST:event_CommandKeyPressed
+
+    private void GameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GameKeyPressed
+        // TODO add your handling code here:
+       /* if (evt.getKeyCode() == KeyEvent.VK_P){
+                Option.setVisible(true);
+                Option.pack();
+                Option.setLocationRelativeTo(null);
+        }*/
+    }//GEN-LAST:event_GameKeyPressed
 
     /**
      * @param args the command line arguments
@@ -864,6 +889,7 @@ public class GUI extends JFrame {
     private javax.swing.JCheckBox CheatBox;
     private javax.swing.JTextField Command;
     private javax.swing.JRadioButton GIGA;
+    private javax.swing.JFrame Game;
     private javax.swing.JFrame HowToPlay;
     private javax.swing.JRadioButton JAPPA;
     private javax.swing.JRadioButton MOJO;

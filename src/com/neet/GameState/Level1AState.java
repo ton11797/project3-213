@@ -217,13 +217,10 @@ public class Level1AState extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
-		if(blockInput || player.getHealth() == 0) return;
-		player.setUp(Keys.keyState[Keys.UP]);
+		if(blockInput || player.getHealth() == 0) return;	
 		player.setLeft(Keys.keyState[Keys.LEFT]);
-		player.setDown(Keys.keyState[Keys.DOWN]);
 		player.setRight(Keys.keyState[Keys.RIGHT]);
-		player.setJumping(Keys.keyState[Keys.BUTTON1]);
-		player.setDashing(Keys.keyState[Keys.BUTTON2]);
+		player.setJumping(Keys.keyState[Keys.SPACE]);
 		if(Keys.isPressed(Keys.BUTTON3)) player.setAttacking();
 		if(Keys.isPressed(Keys.BUTTON4)) player.setCharging();
 	}
