@@ -100,7 +100,7 @@ public class Player extends MapObject {
 		
 		facingRight = true;
 		
-		lives = 10;
+		lives =3;
 		health = maxHealth = 10;
 		
 		// load sprites

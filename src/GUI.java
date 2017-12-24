@@ -1,8 +1,8 @@
+import ModeGame.Pass;
+
 import javax.swing.*;
-import java.awt.*;
 
 import java.awt.Point;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /*
@@ -16,10 +16,6 @@ import javax.swing.UIManager;
  * @author User
  */
 public class GUI extends JFrame {
-    private Pass s;
-    
-    
-    
         public void SetPreview(int i) {
         String type1 ="" ,type2 = "";
         if(i == 0){type1 = "nimbus";  type2 = "Nimbus" ;}
@@ -34,8 +30,7 @@ public class GUI extends JFrame {
     }
     
     
-    public GUI(Pass in) {
-        s = in;
+    public GUI() {
         SetPreview(0);
         initComponents();
     }
@@ -243,9 +238,9 @@ public class GUI extends JFrame {
 
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
-        s.setValue(3);
-        if(s.O!=null) {
-            s.O.dispose();
+        Pass.setValue(3);
+        if(Pass.O!=null) {
+            Pass.O.dispose();
         }
         this.dispose();
 
@@ -275,20 +270,20 @@ public class GUI extends JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        s.setValue(3);
+        Pass.setValue(3);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        s.setValue(1);
+        Pass.setValue(1);
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        s.setValue(2);
+        Pass.setValue(2);
         //this.dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed

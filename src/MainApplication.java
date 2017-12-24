@@ -1,51 +1,61 @@
 /**
  * Created by Denice on 21/12/2560.
  */
+import ModeGame.Pass;
 import com.neet.Main.GamePanel;
 import javax.swing.*;
 public class MainApplication {
     public static void main(String[] args) {
         boolean exit = false;
         JFrame t;
-        Pass start = new Pass(0);
+        JFrame window=null;
         do {
-            if(start.getValue() !=4) {
-                JFrame frame = new GUI(start);
+            System.out.println(Pass.getValue());
+            if(Pass.getValue() !=4) {
+                JFrame frame = new GUI();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
-            while (start.getValue() == 0 ||start.getValue() ==4) {
+            while (Pass.getValue() == 0 ||Pass.getValue() ==4) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            if (start.getValue() == 1) {
-                JFrame window = new JFrame("JAPPA GAME");
+            if (Pass.getValue() == 1) {
+                window = new JFrame("JAPPA GAME");
                 window.add(new GamePanel());
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 window.setResizable(false);
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-                exit = true;
-            } else if (start.getValue() == 2) {
-                start.setValue(0);
-                t = new OptionFrame(start);
+                Pass.setValue(5);
+            } else if (Pass.getValue() == 2) {
+                Pass.setValue(0);
+                t = new OptionFrame();
                 t.setVisible(true);
-                start.setoF(t);
-                while (start.getValue() == 0) {
+                Pass.setoF(t);
+                while (Pass.getValue() == 0) {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                start.setValue(4);
-            } else {
+                Pass.setValue(4);
+            } else if(Pass.getValue() == 3){
                 exit = true;
             }
+            while (Pass.getValue() == 5) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(Pass.getValue() == 0&& window != null)window.dispose();
         }while(!exit);
 
 
