@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
+import javax.swing.JFrame;
 
 public class PauseState extends GameState {
 	
@@ -32,6 +33,7 @@ public class PauseState extends GameState {
 		g.setColor(Color.WHITE);
 		g.setFont(font);
 		g.drawString("Game Paused", 90, 90);
+
 	}
 	
 	public void handleInput() {
