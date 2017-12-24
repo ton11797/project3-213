@@ -4,9 +4,6 @@ import javax.swing.*;
 
 import java.awt.Point;
 import javax.swing.UIManager;
-import ModeGame.ModeGame;
-import java.awt.Color;
-import java.awt.event.KeyEvent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,8 +34,6 @@ public class GUI extends JFrame {
 
         SetPreview(0);
         initComponents();
-        HowToPlay.getContentPane().setBackground(new Color(240,174,110));
-        Option.getContentPane().setBackground(Color.DARK_GRAY);
     }
 
     /**
@@ -50,33 +45,6 @@ public class GUI extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HowToPlay = new javax.swing.JFrame();
-        jLabel2 = new javax.swing.JLabel();
-        X1 = new javax.swing.JLabel();
-        Option = new javax.swing.JFrame();
-        jPanel5 = new javax.swing.JPanel();
-        CheatBox = new javax.swing.JCheckBox();
-        jLabel6 = new javax.swing.JLabel();
-        MOJO = new javax.swing.JRadioButton();
-        GIGA = new javax.swing.JRadioButton();
-        JAPPA = new javax.swing.JRadioButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        Command = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        PanelSet1 = new javax.swing.JPanel();
-        SetCustom = new javax.swing.JRadioButton();
-        PanelSet = new javax.swing.JPanel();
-        SetDefailt = new javax.swing.JRadioButton();
-        SliderSpeed = new javax.swing.JSlider();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Mode = new javax.swing.JComboBox<>();
-        TabBar1 = new javax.swing.JPanel();
-        X2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         TabBar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         minus = new javax.swing.JLabel();
@@ -599,8 +567,9 @@ public class GUI extends JFrame {
         MainFrames.setLayout(MainFramesLayout);
         MainFramesLayout.setHorizontalGroup(
             MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MainFramesLayout.createSequentialGroup()
-                .addGroup(MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainFramesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainFramesLayout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -692,149 +661,10 @@ public class GUI extends JFrame {
 
     private void helpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpMouseClicked
         // TODO add your handling code here:
-                HowToPlay.setVisible(true);
-                HowToPlay.pack();
-                HowToPlay.setLocationRelativeTo(null);
-                
+                JFrame frame = new How();
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
     }//GEN-LAST:event_helpMouseClicked
-
-    private void X1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_X1MouseClicked
-        // TODO add your handling code here:
-        HowToPlay.dispose();
-    }//GEN-LAST:event_X1MouseClicked
-
-    private void HowToPlayMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HowToPlayMousePressed
-        // TODO add your handling code here:
-        point = evt.getPoint();
-    }//GEN-LAST:event_HowToPlayMousePressed
-
-    private void HowToPlayMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HowToPlayMouseDragged
-        // TODO add your handling code here:
-        int x = HowToPlay.getLocation().x ;
-        int y = HowToPlay.getLocation().y ;
-            x += evt.getX() - point.x;
-            y += evt.getY() - point.y;
-                HowToPlay.setLocation(x,y);
-    }//GEN-LAST:event_HowToPlayMouseDragged
-
-    private void CheatBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheatBoxActionPerformed
-        // TODO add your handling code here:
-        if(CheatBox.isSelected()){
-            Command.setVisible(true);
-            Command.setEnabled(true);
-            Command.setBackground(Color.ORANGE);
-        }
-        else{
-            Command.setText("");
-            Command.setVisible(false);
-            ModeGame.ResetCheat();
-        }
-    }//GEN-LAST:event_CheatBoxActionPerformed
-
-    private void MOJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MOJOActionPerformed
-        // TODO add your handling code here:
-        ModeGame.SetCharacter(3);
-    }//GEN-LAST:event_MOJOActionPerformed
-
-    private void GIGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GIGAActionPerformed
-        // TODO add your handling code here:
-        ModeGame.SetCharacter(1);
-    }//GEN-LAST:event_GIGAActionPerformed
-
-    private void JAPPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAPPAActionPerformed
-        // TODO add your handling code here:
-        ModeGame.SetCharacter(2);
-    }//GEN-LAST:event_JAPPAActionPerformed
-
-    private void CommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CommandActionPerformed
-
-    }//GEN-LAST:event_CommandActionPerformed
-
-    private void CommandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommandKeyPressed
-        // TODO add your handling code here:
-
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
-
-            if(Command.getText().equalsIgnoreCase("iron")){
-                Command.setBackground(Color.GREEN);
-                ModeGame.iron = true ;
-            }
-
-            else if (Command.getText().equalsIgnoreCase("invisible")) {
-                Command.setBackground(Color.GREEN);
-                ModeGame.invisible = true;
-            }
-
-            else if(Command.getText().equalsIgnoreCase("god")){
-                Command.setBackground(Color.GREEN);
-                ModeGame.SetGod();
-            }
-
-            else{
-                Command.setBackground(Color.RED);
-            }
-
-        }
-
-    }//GEN-LAST:event_CommandKeyPressed
-
-    private void SetCustomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetCustomActionPerformed
-        // TODO add your handling code here:
-        Mode.setEnabled(true);
-        SliderSpeed.setEnabled(true);
-        
-        JAPPA.setEnabled(true);
-        MOJO.setEnabled(true);
-        GIGA.setEnabled(true);
-        
-        PanelSet1.setBackground(new Color(0,204,204));
-        PanelSet.setBackground(Color.DARK_GRAY);
-
-    }//GEN-LAST:event_SetCustomActionPerformed
-
-    private void SetDefailtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetDefailtActionPerformed
-        // TODO add your handling code here:
-        Mode.setSelectedIndex(2);
-        SliderSpeed.setValue(20);
-        
-        Mode.setEnabled(false);
-        SliderSpeed.setEnabled(false);
-        
-        JAPPA.setEnabled(false);
-        MOJO.setEnabled(false);
-        GIGA.setEnabled(false);
-
-        JAPPA.setSelected(true);
-        PanelSet.setBackground(new Color(0,204,204));
-        PanelSet1.setBackground(Color.DARK_GRAY);
-
-    }//GEN-LAST:event_SetDefailtActionPerformed
-
-    private void ModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeActionPerformed
-        // TODO add your handling code here:
-        ModeGame.Set( Mode.getSelectedIndex() );
-    }//GEN-LAST:event_ModeActionPerformed
-
-    private void X2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_X2MouseClicked
-        // TODO add your handling code here:
-        ModeGame.SetSpeed( SliderSpeed.getValue() );
-        Option.dispose();
-    }//GEN-LAST:event_X2MouseClicked
-
-    private void TabBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabBar1MouseDragged
-        // TODO add your handling code here:
-
-        int x = Option.getLocation().x ;
-        int y = Option.getLocation().y ;
-        x += evt.getX() - point.x;
-        y += evt.getY() - point.y;
-        Option.setLocation(x,y);
-    }//GEN-LAST:event_TabBar1MouseDragged
-
-    private void TabBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabBar1MousePressed
-        // TODO add your handling code here:
-        point = evt.getPoint();
-    }//GEN-LAST:event_TabBar1MousePressed
 
     /**
      * @param args the command line arguments
@@ -872,43 +702,16 @@ public class GUI extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox CheatBox;
-    private javax.swing.JTextField Command;
-    private javax.swing.JRadioButton GIGA;
-    private javax.swing.JFrame HowToPlay;
-    private javax.swing.JRadioButton JAPPA;
-    private javax.swing.JRadioButton MOJO;
     private javax.swing.JPanel MainFrames;
     private javax.swing.JPanel MenuFrame;
-    private javax.swing.JComboBox<String> Mode;
-    private javax.swing.JFrame Option;
-    private javax.swing.JPanel PanelSet;
-    private javax.swing.JPanel PanelSet1;
-    private javax.swing.JRadioButton SetCustom;
-    private javax.swing.JRadioButton SetDefailt;
-    private javax.swing.JSlider SliderSpeed;
     private javax.swing.JPanel TabBar;
-    private javax.swing.JPanel TabBar1;
     private javax.swing.JLabel X;
-    private javax.swing.JLabel X1;
-    private javax.swing.JLabel X2;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel help;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel minus;
     // End of variables declaration//GEN-END:variables
 }
