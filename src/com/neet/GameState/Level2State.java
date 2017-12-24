@@ -50,7 +50,7 @@ public class Level2State extends GameState {
 		// tilemap
 		tileMap = new TileMap(35);
 		tileMap.loadTiles("Resource2/Tilesets/");
-		tileMap.loadMap("Resource2/state2");
+		tileMap.loadMap("Resources/Maps/State2");
 		tileMap.setPosition(140, 0);
 		tileMap.setTween(1);
 		

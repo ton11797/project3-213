@@ -30,7 +30,6 @@ public class Player extends MapObject {
 	// actions
 	private boolean dashing;
 	private boolean attacking;
-	private boolean upattacking;
 	private boolean charging;
 	private int chargingTick;
 	
@@ -59,9 +58,7 @@ public class Player extends MapObject {
 	private static final int ATTACKING = 2;
 	private static final int JUMPING = 3;
 	private static final int FALLING = 4;
-	private static final int UPATTACKING = 5;
 	private static final int CHARGING = 6;
-	private static final int DASHING = 7;
 	private static final int KNOCKBACK = 8;
 	private static final int DEAD = 9;
 
@@ -168,12 +165,11 @@ public class Player extends MapObject {
 	public void setAttacking() {
 		if(knockback) return;
 		if(charging) return;
-		if(up && !attacking) upattacking = true;
-		else attacking = true;
+		attacking = true;
 	}
 	public void setCharging() {
 		if(knockback) return;
-		if(!attacking && !upattacking && !charging) {
+		if(!attacking && !charging) {
 			charging = true;
 			chargingTick = 0;
 		}
@@ -205,7 +201,8 @@ public class Player extends MapObject {
 	
 	public void hit(int damage) {
 		if(flinching) return;
-		stop();
+		if(!ModeGame.immortal){
+                stop();
 		if(!ModeGame.god) {
 			health -= damage;
 		}
@@ -218,6 +215,7 @@ public class Player extends MapObject {
 		knockback = true;
 		falling = true;
 		jumping = false;
+        }
 	}
 	
 	public void reset() {
@@ -229,7 +227,7 @@ public class Player extends MapObject {
 	
 	public void stop() {
 		left = right = up = down = flinching = 
-			dashing = jumping = attacking = upattacking = charging = false;
+			dashing = jumping = attacking = charging = false;
 	}
 	
 	private void getNextPosition() {
@@ -241,7 +239,6 @@ public class Player extends MapObject {
 		}
 		
 		double maxSpeed = this.maxSpeed;
-		if(dashing) maxSpeed *= 1.75;
 		
 		// movement
 		if(left) {
@@ -272,7 +269,7 @@ public class Player extends MapObject {
 		}
 		
 		// cannot move while attacking, except in air
-		if((attacking || upattacking || charging) &&
+		if((attacking || charging) &&
 			!(jumping || falling)) {
 			dx = 0;
 		}
@@ -287,7 +284,6 @@ public class Player extends MapObject {
 		// jumping
 		if(jumping && !falling) {
 			dy = -5.5;
-			//dy = jumpStart;
 			falling = true;
 		}
 		
@@ -342,11 +338,9 @@ public class Player extends MapObject {
 		
 		
 		// check attack finished
-		if(currentAction == ATTACKING ||
-			currentAction == UPATTACKING) {
+		if(currentAction == ATTACKING ) {
 			if(animation.hasPlayedOnce()) {
 				attacking = false;
-				upattacking = false;
 			}
 		}
 		if(currentAction == CHARGING) {
@@ -371,14 +365,7 @@ public class Player extends MapObject {
 					e.hit(damage);
 				}
 			}
-			
-			// check upward attack
-			if(currentAction == UPATTACKING &&
-					animation.getFrame() == 3 && animation.getCount() == 0) {
-				if(e.intersects(aur)) {
-					e.hit(damage);
-				}
-			}
+
 			
 			// check charging attack
 			if(currentAction == CHARGING) {
@@ -408,13 +395,6 @@ public class Player extends MapObject {
 		else if(health == 0) {
 			if(currentAction != DEAD) {
 				setAnimation(DEAD);
-			}
-		}
-		else if(upattacking) {
-			if(currentAction != UPATTACKING) {
-				setAnimation(UPATTACKING);
-				aur.x = (int)x - 15;
-				aur.y = (int)y - 50;
 			}
 		}
 		else if(attacking) {
@@ -452,7 +432,7 @@ public class Player extends MapObject {
 		animation.update();
 		
 		// set direction
-		if(!attacking && !upattacking && !charging && !knockback) {
+		if(!attacking && !charging && !knockback) {
 			if(right) facingRight = true;
 			if(left) facingRight = false;
 		}

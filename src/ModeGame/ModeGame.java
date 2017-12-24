@@ -15,6 +15,7 @@ public final class ModeGame {
     public static double maxspeed = 2.5;
     public static String character = "2";
     public static boolean god = false;
+    public static boolean immortal = false;
 
     public static void Set(int i){
           
