@@ -30,7 +30,7 @@ public class Pterodactyl extends Enemy {
 		damage = 1;
 		moveSpeed = 5;
 		
-		idleSprites = Content.Gazer[0];
+		idleSprites = Content.Pterodactyl[0];
 		
 		animation.setFrames(idleSprites);
 		animation.setDelay(4);

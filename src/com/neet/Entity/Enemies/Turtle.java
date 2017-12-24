@@ -34,7 +34,7 @@ public class Turtle extends Enemy {
 		maxFallSpeed = 4.0;
 		jumpStart = -5;
 		
-		sprites = Content.GelPop[0];
+		sprites = Content.Turtle[0];
 		animation.setFrames(sprites);
 		animation.setDelay(4);
 		
