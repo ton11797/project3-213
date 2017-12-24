@@ -1,5 +1,5 @@
 
-import ModeGame.*;
+import ModeGame.ModeGame;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -16,6 +16,7 @@ import javax.swing.UIManager;
  * @author User
  */
 public class OptionFrame extends javax.swing.JFrame {
+    private Pass s;
     Point point;
     
     
@@ -32,7 +33,8 @@ public class OptionFrame extends javax.swing.JFrame {
         }
     }
     
-    public OptionFrame() {
+    public OptionFrame(Pass ss) {
+        s=ss;
         SetPreview(0);
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -403,7 +405,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
-        Pass.setValue(1);
+        s.setValue(1);
         ModeGame.SetSpeed( SliderSpeed.getValue() );
         this.dispose();
     }//GEN-LAST:event_XMouseClicked
@@ -543,7 +545,7 @@ public class OptionFrame extends javax.swing.JFrame {
         //Create and display the form
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OptionFrame(new ModeGame.Pass(0)).setVisible(true);
+                new OptionFrame(new Pass(0)).setVisible(true);
             }
         });
     }*/
