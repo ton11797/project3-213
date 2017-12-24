@@ -1,10 +1,9 @@
 package com.neet.Entity;
 
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class HUD {
 	
@@ -16,9 +15,8 @@ public class HUD {
 	public HUD(Player p) {
 		player = p;
 		try {
-			BufferedImage image = ImageIO.read(new File("Resources/HUD/Hud.gif"));
-			heart = image.getSubimage(0, 0, 13, 12);
-			life = image.getSubimage(0, 12, 12, 11);
+			heart =  ImageIO.read(new File("Resource2/HUD/meat.png"));
+			life = ImageIO.read(new File("Resource2/HUD/egg.png"));
 		}
 		catch(Exception e) {
 			e.printStackTrace();

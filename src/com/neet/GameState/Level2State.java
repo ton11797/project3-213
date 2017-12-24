@@ -12,27 +12,32 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class Level1AState extends GameState {
-	
-	private Background sky;
-	private Background clouds;
 
+
+public class Level2State extends GameState {
+	
+	private Background temple;
+	
 	private Player player;
 	private TileMap tileMap;
 	private ArrayList<Enemy> enemies;
+
 	
 	private HUD hud;
+	private BufferedImage hageonText;
 	private Title title;
 	private Title subtitle;
 	
 	// events
 	private boolean blockInput = false;
+	private int eventCount = 0;
 	private boolean eventStart;
 	private ArrayList<Rectangle> tb;
 	private boolean eventFinish;
 	private boolean eventDead;
+	private boolean eventQuake;
 	
-	public Level1AState(GameStateManager gsm) {
+	public Level2State(GameStateManager gsm) {
 		super(gsm);
 		init();
 	}
@@ -40,24 +45,18 @@ public class Level1AState extends GameState {
 	public void init() {
 		
 		// backgrounds
-		sky = new Background("Resource2/Backgrounds/bg.png", 0);
-		clouds = new Background("Resources/Backgrounds/clouds.gif", 0.5);
+		temple = new Background("Resource2/Backgrounds/temple.gif", 0.5, 0);
 		
 		// tilemap
 		tileMap = new TileMap(35);
 		tileMap.loadTiles("Resource2/Tilesets/");
-		tileMap.loadMap("Resources/Maps/State1");
+		tileMap.loadMap("Resource2/state2");
 		tileMap.setPosition(140, 0);
-		tileMap.setBounds(
-			tileMap.getWidth() - 1 * tileMap.getTileSize(),
-			tileMap.getHeight() + 1 *tileMap.getTileSize() ,
-			0, 0
-		);
 		tileMap.setTween(1);
 		
 		// player
 		player = new Player(tileMap);
-		player.setPosition(80, 100);
+		player.setPosition(50, 450);
 		player.setHealth(PlayerSave.getHealth());
 		player.setLives(PlayerSave.getLives());
 		player.setTime(PlayerSave.getTime());
@@ -67,8 +66,8 @@ public class Level1AState extends GameState {
 		populateEnemies();
 		
 		
-		// init player
 		player.init(enemies);
+		
 
 		
 		// hud
@@ -79,7 +78,11 @@ public class Level1AState extends GameState {
 		tb = new ArrayList<Rectangle>();
 		eventStart();
 		
-
+		// sfx
+		//JukeBox.load("/SFX/teleport.mp3", "teleport");
+		//JukeBox.load("/SFX/explode.mp3", "explode");
+		//JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
+		
 	}
 	
 	private void populateEnemies() {
@@ -87,56 +90,60 @@ public class Level1AState extends GameState {
 		Turtle gp;
 		Pterodactyl g;
 		
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(350, 300);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(750, 100);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(550, 300);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(900, 150);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(560, 300);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(1320, 250);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(1660, 100);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(1570, 160);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(1700, 100);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(1590, 160);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(2177, 100);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(2600, 370);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(2960, 100);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(2620, 370);
 		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(2980, 100);
-		enemies.add(gp);
-		gp = new Turtle (tileMap, player);
-		gp.setPosition(3000, 100);
+		gp = new Turtle(tileMap, player);
+		gp.setPosition(2640, 370);
 		enemies.add(gp);
 		
 		g = new Pterodactyl(tileMap);
-		g.setPosition(300, 100);
+		g.setPosition(904, 130);
 		enemies.add(g);
 		g = new Pterodactyl(tileMap);
-		g.setPosition(500, 100);
+		g.setPosition(1080, 270);
 		enemies.add(g);
+		g = new Pterodactyl(tileMap);
+		g.setPosition(1200, 270);
+		enemies.add(g);
+		g = new Pterodactyl(tileMap);
+		g.setPosition(1704, 300);
+		enemies.add(g);
+		
+		
 	}
 	
 	public void update() {
 		
 		// check keys
 		handleInput();
-		
-		// check if end of level event should start
 		System.out.println(player.getx()+" "+player.gety());
-		if(player.getx() == 1400 ) {
-			eventFinish = blockInput = true;
+		// check if quake event should start
+		if(player.getx() > 2175 && !tileMap.isShaking()) {
+			eventQuake = blockInput = true;
 		}
 		
-		// check if player dead event should start
-		if(player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
-			eventDead = blockInput = true;
+		// check if end of level event should start
+		if(player.getx() == 2850) {
+			eventFinish = blockInput = true;
 		}
 		
 		// play events
@@ -155,10 +162,13 @@ public class Level1AState extends GameState {
 		}
 		
 		// move backgrounds
-		clouds.setPosition(tileMap.getx(), tileMap.gety());
+		temple.setPosition(tileMap.getx(), tileMap.gety());
 		
 		// update player
 		player.update();
+		if(player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
+			eventDead = blockInput = true;
+		}
 		
 		// update tilemap
 		tileMap.setPosition(
@@ -183,9 +193,7 @@ public class Level1AState extends GameState {
 	public void draw(Graphics2D g) {
 		
 		// draw background
-		sky.draw(g);
-		clouds.draw(g);
-		//mountains.draw(g);
+		temple.draw(g);
 		
 		// draw tilemap
 		tileMap.draw(g);
@@ -195,23 +203,14 @@ public class Level1AState extends GameState {
 			enemies.get(i).draw(g);
 		}
 		
-
 		// draw player
 		player.draw(g);
 		
+
 		
 		// draw hud
 		hud.draw(g);
-		
-		// draw title
-		if(title != null) title.draw(g);
-		if(subtitle != null) subtitle.draw(g);
-		
-		// draw transition boxes
-		g.setColor(java.awt.Color.BLACK);
-		for(int i = 0; i < tb.size(); i++) {
-			g.fill(tb.get(i));
-		}
+
 		
 	}
 	
@@ -234,20 +233,22 @@ public class Level1AState extends GameState {
 	
 	// reset level
 	private void reset() {
+		player.loseLife();
 		player.reset();
-		player.setPosition(80, 161);
+		player.setPosition(50, 450);
 		populateEnemies();
 		blockInput = true;
+		eventCount = 0;
 		tileMap.setShaking(false, 0);
 		eventStart = true;
 		eventStart();
 	}
-	
+
 	// level started
 	private void eventStart() {
 		eventStart = blockInput = false;
 	}
-	
+
 	// player has died
 	private void eventDead() {
 		if(player.getLives() == 0) {
@@ -255,17 +256,18 @@ public class Level1AState extends GameState {
 		}
 		else {
 			eventDead = blockInput = false;
+			eventCount = 0;
 			player.loseLife();
 			reset();
 		}
 	}
-	
+
 	// finished level
 	private void eventFinish() {
 		PlayerSave.setHealth(player.getHealth());
 		PlayerSave.setLives(player.getLives());
 		PlayerSave.setTime(player.getTime());
-		gsm.setState(GameStateManager.LEVEL1BSTATE);
+		gsm.setState(GameStateManager.LEVEL1);
 	}
 
 }

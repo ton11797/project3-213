@@ -1,10 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 
-import java.awt.Point;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,8 +13,7 @@ import javax.swing.UIManager;
  */
 public class GUI extends JFrame {
     private Pass s;
-    
-    
+
     
         public void SetPreview(int i) {
         String type1 ="" ,type2 = "";

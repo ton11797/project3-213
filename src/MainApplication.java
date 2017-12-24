@@ -1,16 +1,18 @@
 /**
  * Created by Denice on 21/12/2560.
  */
+
 import com.neet.Main.GamePanel;
-import java.awt.event.WindowAdapter;
+
 import javax.swing.*;
 public class MainApplication {
+    private static JFrame frame;
     public static void main(String[] args) {
         boolean exit = false;
         Pass start = new Pass(0);
         do {
             if(start.getValue() !=4) {
-                JFrame frame = new GUI(start);
+                frame = new GUI(start);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
@@ -22,6 +24,7 @@ public class MainApplication {
                 }
             }
             if (start.getValue() == 1) {
+
                 JFrame window = new JFrame("JAPPA GAME");
                 window.add(new GamePanel());
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,7 +32,7 @@ public class MainApplication {
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-//                start.setValue(0);
+               // start.setValue(0);
                 exit = true;
             } else if (start.getValue() == 2) {
                 start.setValue(0);

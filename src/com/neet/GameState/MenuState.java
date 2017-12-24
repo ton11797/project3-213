@@ -1,16 +1,13 @@
 package com.neet.GameState;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-
 import com.neet.Entity.PlayerSave;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class MenuState extends GameState {
 	
@@ -96,7 +93,7 @@ public class MenuState extends GameState {
 	private void select() {
 		if(currentChoice == 0) {
 			PlayerSave.init();
-			gsm.setState(GameStateManager.LEVEL1ASTATE);
+			gsm.setState(GameStateManager.LEVEL1);
 		}
 		else if(currentChoice == 1) {
 			System.exit(0);
