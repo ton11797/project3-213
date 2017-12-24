@@ -1,5 +1,5 @@
 
-import ModeGame.ModeGame;
+import ModeGame.*;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -16,7 +16,6 @@ import javax.swing.UIManager;
  * @author User
  */
 public class OptionFrame extends javax.swing.JFrame {
-    private Pass s;
     Point point;
     
     
@@ -33,8 +32,7 @@ public class OptionFrame extends javax.swing.JFrame {
         }
     }
     
-    public OptionFrame(Pass ss) {
-        s=ss;
+    public OptionFrame() {
         SetPreview(0);
         initComponents();
         getContentPane().setBackground(Color.DARK_GRAY);
@@ -405,7 +403,7 @@ public class OptionFrame extends javax.swing.JFrame {
 
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
-        s.setValue(1);
+        Pass.setValue(1);
         ModeGame.SetSpeed( SliderSpeed.getValue() );
         this.dispose();
     }//GEN-LAST:event_XMouseClicked
@@ -485,7 +483,7 @@ public class OptionFrame extends javax.swing.JFrame {
         else{
             Command.setText("");
             Command.setVisible(false);
-            ModeGame.god = false;
+            ModeGame.invisible = false;
             ModeGame.immortal = false ;
         }
     }//GEN-LAST:event_CheatBoxActionPerformed
@@ -501,7 +499,7 @@ public class OptionFrame extends javax.swing.JFrame {
             
             if(Command.getText().equals("No Damage")){
                 Command.setBackground(Color.GREEN); 
-                ModeGame.god = true ;
+                ModeGame.invisible = true ;
             }
             
             if(Command.getText().equals("Immortal")){
