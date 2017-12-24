@@ -31,8 +31,21 @@ public class MainApplication {
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-                exit = true;
-            }else {
+                Pass.setValue(5);
+            } else if (Pass.getValue() == 2) {
+                Pass.setValue(0);
+                t = new OptionFrame();
+                t.setVisible(true);
+                Pass.setoF(t);
+                while (Pass.getValue() == 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                Pass.setValue(4);
+            } else if(Pass.getValue() == 3){
                 exit = true;
             }
             while (Pass.getValue() == 5) {
