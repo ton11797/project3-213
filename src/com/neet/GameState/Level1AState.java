@@ -129,7 +129,7 @@ public class Level1AState extends GameState {
 		handleInput();
 		
 		// check if end of level event should start
-		System.out.println(player.getx()+" "+player.gety());
+		//System.out.println(player.getx()+" "+player.gety());
 		if(player.getx() == 1400 ) {
 			eventFinish = blockInput = true;
 		}

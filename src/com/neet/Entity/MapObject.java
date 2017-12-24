@@ -44,7 +44,6 @@ public abstract class MapObject {
 	// animation
 	protected Animation animation;
 	protected int currentAction;
-	protected int previousAction;
 	protected boolean facingRight;
 	
 	// movement
@@ -81,17 +80,7 @@ public abstract class MapObject {
 	public boolean intersects(Rectangle r) {
 		return getRectangle().intersects(r);
 	}
-	
-	public boolean contains(MapObject o) {
-		Rectangle r1 = getRectangle();
-		Rectangle r2 = o.getRectangle();
-		return r1.contains(r2);
-	}
-	
-	public boolean contains(Rectangle r) {
-		return getRectangle().contains(r);
-	}
-	
+
 	public Rectangle getRectangle() {
 		return new Rectangle(
 				(int)x - cwidth / 2,
@@ -191,11 +180,7 @@ public abstract class MapObject {
 		this.x = x;
 		this.y = y;
 	}
-	public void setVector(double dx, double dy) {
-		this.dx = dx;
-		this.dy = dy;
-	}
-	
+
 	public void setMapPosition() {
 		xmap = tileMap.getx();
 		ymap = tileMap.gety();
@@ -206,13 +191,7 @@ public abstract class MapObject {
 	public void setUp(boolean b) { up = b; }
 	public void setDown(boolean b) { down = b; }
 	public void setJumping(boolean b) { jumping = b; }
-	
-	public boolean notOnScreen() {
-		return x + xmap + width < 0 ||
-			x + xmap - width > GamePanel.WIDTH ||
-			y + ymap + height < 0 ||
-			y + ymap - height > GamePanel.HEIGHT;
-	}
+
 	
 	public void draw(java.awt.Graphics2D g) {
 		setMapPosition();

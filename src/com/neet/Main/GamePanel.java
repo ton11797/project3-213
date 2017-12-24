@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import ModeGame.Pass;
 import com.neet.GameState.GameStateManager;
 import com.neet.Handlers.Keys;
 
@@ -72,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		long wait;
 		
 		// game loop
-		while(running) {
+		while(running&& Pass.getValue()==5) {
 			
 			start = System.nanoTime();
 			
@@ -91,7 +92,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 		
 	}

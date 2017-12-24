@@ -1,8 +1,8 @@
+import ModeGame.Pass;
+
 import javax.swing.*;
-import java.awt.*;
 
 import java.awt.Point;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import ModeGame.ModeGame;
 import java.awt.Color;
@@ -19,10 +19,6 @@ import java.awt.event.KeyEvent;
  * @author User
  */
 public class GUI extends JFrame {
-    private Pass s;
-    
-    
-    
         public void SetPreview(int i) {
         String type1 ="" ,type2 = "";
         if(i == 0){type1 = "nimbus";  type2 = "Nimbus" ;}
@@ -37,8 +33,7 @@ public class GUI extends JFrame {
     }
     
     
-    public GUI(Pass in) {
-        s = in;
+    public GUI() {
         SetPreview(0);
         initComponents();
         HowToPlay.getContentPane().setBackground(new Color(240,174,110));
@@ -680,7 +675,7 @@ public class GUI extends JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        s.setValue(1);
+        Pass.setValue(1);
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
