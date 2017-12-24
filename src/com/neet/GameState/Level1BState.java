@@ -153,7 +153,7 @@ public class Level1BState extends GameState {
 		
 		// check keys
 		handleInput();
-		System.out.println(player.getx()+" "+player.gety());
+		//System.out.println(player.getx()+" "+player.gety());
 		// check if quake event should start
 		if(player.getx() > 2175 && !tileMap.isShaking()) {
 			eventQuake = blockInput = true;
