@@ -28,7 +28,6 @@ public class Player extends MapObject {
 	private long time;
 	
 	// actions
-	private boolean dashing;
 	private boolean attacking;
 	private boolean charging;
 	private int chargingTick;
@@ -174,12 +173,7 @@ public class Player extends MapObject {
 			chargingTick = 0;
 		}
 	}
-	public void setDashing(boolean b) {
-		if(!b) dashing = false;
-		else if(b && !falling) {
-			dashing = true;
-		}
-	}
+
 	
 	public void setDead() {
 		health = 0;
@@ -196,14 +190,14 @@ public class Player extends MapObject {
 	public void setHealth(int i) { health = i; }
 	public void setLives(int i) { lives = i; }
 	public void gainLife() { lives++; }
-	public void loseLife() { lives--; }
+	public void loseLife() { if(!ModeGame.immortal)lives--; }
 	public int getLives() { return lives; }
 	
 	public void hit(int damage) {
 		if(flinching) return;
-		if(!ModeGame.immortal){
+		if(!ModeGame.invisible){
                 stop();
-		if(!ModeGame.god) {
+		if(!ModeGame.iron) {
 			health -= damage;
 		}
 		if(health < 0) health = 0;
@@ -227,7 +221,7 @@ public class Player extends MapObject {
 	
 	public void stop() {
 		left = right = up = down = flinching = 
-			dashing = jumping = attacking = charging = false;
+		jumping = attacking = charging = false;
 	}
 	
 	private void getNextPosition() {

@@ -5,6 +5,8 @@ import javax.swing.*;
 
 import java.awt.Point;
 import javax.swing.UIManager;
+import ModeGame.ModeGame;
+import java.awt.event.KeyEvent; 
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -102,7 +104,7 @@ public class GUI extends JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\how play.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how play.png"))); // NOI18N
 
         X1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         X1.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,7 +170,7 @@ public class GUI extends JFrame {
 
         CheatBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CheatBox.setForeground(new java.awt.Color(255, 255, 255));
-        CheatBox.setText("CHEAT MODE");
+        CheatBox.setText("CHEAT COMMAND");
         CheatBox.setToolTipText("");
         CheatBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -585,7 +587,7 @@ public class GUI extends JFrame {
                         .addGap(29, 29, 29))))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\logpjap.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/logpjap.png"))); // NOI18N
 
         javax.swing.GroupLayout MainFramesLayout = new javax.swing.GroupLayout(MainFrames);
         MainFrames.setLayout(MainFramesLayout);
@@ -675,7 +677,6 @@ public class GUI extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
   
-        //this.dispose();
                 Option.setVisible(true);
                 Option.pack();
                 Option.setLocationRelativeTo(null);
@@ -736,8 +737,7 @@ public class GUI extends JFrame {
         else{
             Command.setText("");
             Command.setVisible(false);
-            ModeGame.god = false;
-            ModeGame.immortal = false ;
+            ModeGame.ResetCheat();
         }
     }//GEN-LAST:event_CheatBoxActionPerformed
 
@@ -806,19 +806,18 @@ public class GUI extends JFrame {
     private void CommandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CommandKeyPressed
         // TODO add your handling code here:
 
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER ){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            if(Command.getText().equals("No Damage")){
+            if (Command.getText().equals("iron")) {
                 Command.setBackground(Color.GREEN);
-                ModeGame.god = true ;
-            }
-
-            if(Command.getText().equals("Immortal")){
+                ModeGame.iron = true;
+            } else if (Command.getText().equals("invisible")) {
                 Command.setBackground(Color.GREEN);
-                ModeGame.immortal = true ;
-            }
-
-            else {
+                ModeGame.invisible = true;
+            } else if (Command.getText().equals("god")) {
+                Command.setBackground(Color.GREEN);
+                ModeGame.GodMode();
+            } else {
                 Command.setBackground(Color.red);
             }
 
