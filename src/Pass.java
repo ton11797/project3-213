@@ -14,6 +14,7 @@ public class Pass {
     }
     public synchronized void setValue(int in){
         value=in;
+        System.out.print("set");
     }
     public synchronized int getValue(){
         return value;

@@ -30,7 +30,20 @@ public class MainApplication {
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
                 exit = true;
-            }else {
+            } else if (start.getValue() == 2) {
+                start.setValue(0);
+                t = new OptionFrame(start);
+                t.setVisible(true);
+                start.setoF(t);
+                while (start.getValue() == 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                start.setValue(4);
+            } else {
                 exit = true;
             }
         }while(!exit);

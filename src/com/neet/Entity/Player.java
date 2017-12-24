@@ -174,6 +174,12 @@ public class Player extends MapObject {
 			chargingTick = 0;
 		}
 	}
+	public void setDashing(boolean b) {
+		if(!b) dashing = false;
+		else if(b && !falling) {
+			dashing = true;
+		}
+	}
 	
 	public void setDead() {
 		health = 0;
@@ -190,16 +196,14 @@ public class Player extends MapObject {
 	public void setHealth(int i) { health = i; }
 	public void setLives(int i) { lives = i; }
 	public void gainLife() { lives++; }
-	public void loseLife() { 
-            if(!ModeGame.immortal)lives--; 
-        }
+	public void loseLife() { lives--; }
 	public int getLives() { return lives; }
 	
 	public void hit(int damage) {
 		if(flinching) return;
-		if(!ModeGame.invisible){
+		if(!ModeGame.immortal){
                 stop();
-		if(!ModeGame.iron) {
+		if(!ModeGame.god) {
 			health -= damage;
 		}
 		if(health < 0) health = 0;
@@ -320,6 +324,8 @@ public class Player extends MapObject {
 		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
+		if(isFalling && !falling) {
+		}
 		if(dx == 0) x = (int)x;
 		
 		// check done flinching
