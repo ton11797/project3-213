@@ -4,19 +4,21 @@
 
 import com.neet.Main.GamePanel;
 import javax.swing.*;
+/*
 public class MainApplication {
     private static JFrame frame;
     public static void main(String[] args) {
         boolean exit = false;
         JFrame t;
-        Pass start = new Pass(0);
+        JFrame window=null;
+        Pass Pass = new Pass(0);
         do {
             if(start.getValue() !=4) {
-                frame = new GUI(start);
+                JFrame frame = new GUI(start);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
-            while (start.getValue() == 0 ||start.getValue() ==4) {
+            while (Pass.getValue() == 0 ||Pass.getValue() ==4) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -24,7 +26,6 @@ public class MainApplication {
                 }
             }
             if (start.getValue() == 1) {
-
                 JFrame window = new JFrame("JAPPA GAME");
                 window.add(new GamePanel());
                 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,27 +33,22 @@ public class MainApplication {
                 window.pack();
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
-                exit = true;
-            } else if (start.getValue() == 2) {
-                start.setValue(0);
-                t = new OptionFrame(start);
-                t.setVisible(true);
-                start.setoF(t);
-                while (start.getValue() == 0) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                start.setValue(4);
-            } else {
+                Pass.setValue(5);
+            } else if(Pass.getValue() == 3){
                 exit = true;
             }
+            while (Pass.getValue() == 5) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(Pass.getValue() == 0&& window != null)window.dispose();
         }while(!exit);
 
 
     }
-    
-    
+
 }
+*/
