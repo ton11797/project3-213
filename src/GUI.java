@@ -152,7 +152,7 @@ public class GUI extends JFrame {
             }
         });
 
-        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tilesets/boxItem.png"))); // NOI18N
+        help.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resource2\\Tilesets\\boxItem.png")); // NOI18N
         help.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 helpMouseClicked(evt);
