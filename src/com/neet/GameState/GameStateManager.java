@@ -1,6 +1,5 @@
 package com.neet.GameState;
 
-import ModeGame.Pass;
 import com.neet.Main.GamePanel;
 
 public class GameStateManager {
@@ -35,7 +34,6 @@ public class GameStateManager {
 		else if(state == LEVEL1BSTATE)
 			gameStates[state] = new Level1BState(this);
 		else if(state == MENUSTATE){
-			Pass.setValue(0);
 		}
 
 	}

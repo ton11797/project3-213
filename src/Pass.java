@@ -14,11 +14,8 @@ public class Pass {
     }
     public synchronized void setValue(int in){
         value=in;
-<<<<<<< HEAD:src/Pass.java
-=======
-        System.out.print("set ");
+
         System.out.println(value);
->>>>>>> master:src/ModeGame/Pass.java
     }
     public synchronized int getValue(){
         return value;

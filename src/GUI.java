@@ -1,4 +1,4 @@
-import ModeGame.Pass;
+
 
 import javax.swing.*;
 
@@ -31,9 +31,10 @@ public class GUI extends JFrame {
             ex.printStackTrace();
         }
     }
-    
+    Pass s;
     
     public GUI() {
+
         SetPreview(0);
         initComponents();
         HowToPlay.getContentPane().setBackground(new Color(240,174,110));
@@ -103,7 +104,7 @@ public class GUI extends JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\how play.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how play.png"))); // NOI18N
 
         X1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         X1.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,7 +151,7 @@ public class GUI extends JFrame {
 
         CheatBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CheatBox.setForeground(new java.awt.Color(255, 255, 255));
-        CheatBox.setText("CHEAT MODE");
+        CheatBox.setText("CHEAT COMMAND");
         CheatBox.setToolTipText("");
         CheatBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -553,7 +554,7 @@ public class GUI extends JFrame {
             }
         });
 
-        help.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resource2\\Tilesets\\boxItem.png")); // NOI18N
+        help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tilesets/boxItem.png"))); // NOI18N
         help.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 helpMouseClicked(evt);
@@ -565,30 +566,31 @@ public class GUI extends JFrame {
         MenuFrameLayout.setHorizontalGroup(
             MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuFrameLayout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(help)
-                .addGap(71, 71, 71))
+                .addGap(36, 36, 36))
         );
         MenuFrameLayout.setVerticalGroup(
             MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuFrameLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(MenuFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuFrameLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuFrameLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(help)))
-                .addContainerGap(338, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuFrameLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(help)
+                        .addGap(29, 29, 29))))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon("H:\\Team Drives\\Project\\Paradigms\\project3-213\\Resources\\HUD\\logpjap.png")); // NOI18N
@@ -600,12 +602,12 @@ public class GUI extends JFrame {
             .addGroup(MainFramesLayout.createSequentialGroup()
                 .addGroup(MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainFramesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(MenuFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainFramesLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addGap(210, 210, 210)
+                        .addComponent(MenuFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         MainFramesLayout.setVerticalGroup(
             MainFramesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,8 +615,8 @@ public class GUI extends JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(MenuFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(MenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -629,7 +631,7 @@ public class GUI extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(TabBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MainFrames, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(MainFrames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -666,20 +668,21 @@ public class GUI extends JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Pass.setValue(3);
+        //s.setValue(3);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        Pass.setValue(1);
+ 
         this.dispose();
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Pass.setValue(2);
+  
         //this.dispose();
                 Option.setVisible(true);
                 Option.pack();
@@ -836,7 +839,7 @@ public class GUI extends JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
+    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -859,14 +862,14 @@ public class GUI extends JFrame {
 //            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new GUI().setVisible(true);
-//            }
-//        });
-//    }
+
+       /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GUI().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheatBox;

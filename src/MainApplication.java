@@ -1,18 +1,19 @@
 /**
  * Created by Denice on 21/12/2560.
  */
-import ModeGame.Pass;
 import com.neet.Main.GamePanel;
 import javax.swing.*;
+/*
 public class MainApplication {
     public static void main(String[] args) {
         boolean exit = false;
         JFrame t;
         JFrame window=null;
+        Pass Pass = new Pass(0);
         do {
             System.out.println(Pass.getValue());
             if(Pass.getValue() !=4) {
-                JFrame frame = new GUI();
+                JFrame frame = new GUI(Pass);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
@@ -32,19 +33,6 @@ public class MainApplication {
                 window.setLocationRelativeTo(null);
                 window.setVisible(true);
                 Pass.setValue(5);
-            } else if (Pass.getValue() == 2) {
-                Pass.setValue(0);
-                t = new OptionFrame();
-                t.setVisible(true);
-                Pass.setoF(t);
-                while (Pass.getValue() == 0) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Pass.setValue(4);
             } else if(Pass.getValue() == 3){
                 exit = true;
             }
@@ -60,6 +48,6 @@ public class MainApplication {
 
 
     }
-    
-    
+
 }
+*/
