@@ -7,6 +7,7 @@ import java.awt.Point;
 import javax.swing.UIManager;
 import ModeGame.ModeGame;
 import java.awt.event.KeyEvent; 
+import com.neet.Main.GamePanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,10 +32,9 @@ public class GUI extends JFrame {
             ex.printStackTrace();
         }
     }
-    Pass s;
     
     Point point;
-
+    boolean Start = false;
     
     public GUI() {
 
@@ -80,6 +80,7 @@ public class GUI extends JFrame {
         Command = new javax.swing.JTextField();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        Game = new javax.swing.JFrame();
         TabBar = new javax.swing.JPanel();
         X = new javax.swing.JLabel();
         minus = new javax.swing.JLabel();
@@ -452,6 +453,13 @@ public class GUI extends JFrame {
                 .addGap(0, 43, Short.MAX_VALUE))
         );
 
+        Game.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GameKeyPressed(evt);
+            }
+        });
+        Game.getContentPane().setLayout(new java.awt.CardLayout());
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -635,6 +643,8 @@ public class GUI extends JFrame {
     private void XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XMouseClicked
         // TODO add your handling code here:
         this.dispose();
+        HowToPlay.dispose();
+        Option.dispose();
 
     }//GEN-LAST:event_XMouseClicked
 
@@ -662,16 +672,23 @@ public class GUI extends JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //s.setValue(3);
         this.dispose();
+        HowToPlay.dispose();
+        Option.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
- 
-        this.dispose();
+                this.hide();
 
-
+                Game.add(new GamePanel());
+                Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Game.setResizable(false);
+                Game.pack();
+                Game.setLocationRelativeTo(null);
+                Game.setVisible(true);
+                Start = true;
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -824,6 +841,15 @@ public class GUI extends JFrame {
         }
     }//GEN-LAST:event_CommandKeyPressed
 
+    private void GameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GameKeyPressed
+        // TODO add your handling code here:
+       /* if (evt.getKeyCode() == KeyEvent.VK_P){
+                Option.setVisible(true);
+                Option.pack();
+                Option.setLocationRelativeTo(null);
+        }*/
+    }//GEN-LAST:event_GameKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -863,6 +889,7 @@ public class GUI extends JFrame {
     private javax.swing.JCheckBox CheatBox;
     private javax.swing.JTextField Command;
     private javax.swing.JRadioButton GIGA;
+    private javax.swing.JFrame Game;
     private javax.swing.JFrame HowToPlay;
     private javax.swing.JRadioButton JAPPA;
     private javax.swing.JRadioButton MOJO;
