@@ -105,7 +105,7 @@ public class GUI extends JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how play.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how_play.png"))); // NOI18N
 
         X1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         X1.setForeground(new java.awt.Color(255, 255, 255));
@@ -843,11 +843,6 @@ public class GUI extends JFrame {
 
     private void GameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GameKeyPressed
         // TODO add your handling code here:
-       /* if (evt.getKeyCode() == KeyEvent.VK_P){
-                Option.setVisible(true);
-                Option.pack();
-                Option.setLocationRelativeTo(null);
-        }*/
     }//GEN-LAST:event_GameKeyPressed
 
     /**
@@ -920,17 +915,10 @@ public class GUI extends JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel minus;
     // End of variables declaration//GEN-END:variables
 }
