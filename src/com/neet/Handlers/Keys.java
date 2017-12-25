@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 
 public class Keys {
 	
-	public static final int NUM_KEYS = 7;
+	public static final int NUM_KEYS = 6;
 	
 	public static boolean keyState[] = new boolean[NUM_KEYS];
 	public static boolean prevKeyState[] = new boolean[NUM_KEYS];
@@ -18,8 +18,13 @@ public class Keys {
 	public static int SPACE = 2;
 	public static int BUTTON3 = 3;
 	public static int BUTTON4 = 4;
-	public static int ENTER = 5;
-	public static int ESCAPE = 6;
+	public static int ESCAPE = 5;
+        
+        public static void init() {
+            for (int i = 0; i < NUM_KEYS; i++) {
+                keyState[i] = false;
+            }
+        }
 	
 	public static void keySet(int i, boolean b) {
 		if(i == KeyEvent.VK_LEFT) keyState[LEFT] = b;
@@ -39,6 +44,7 @@ public class Keys {
 	public static boolean isPressed(int i) {
 		return keyState[i] && !prevKeyState[i];
 	}
+        
 
 	
 }

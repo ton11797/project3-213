@@ -1,6 +1,6 @@
 package com.neet.Entity;
 
-import ModeGame.ModeGame;
+import com.neet.ModeGame.ModeGame;
 import com.neet.TileMap.TileMap;
 
 import javax.imageio.ImageIO;
@@ -190,7 +190,10 @@ public class Player extends MapObject {
 	public void setHealth(int i) { health = i; }
 	public void setLives(int i) { lives = i; }
 	public void gainLife() { lives++; }
-	public void loseLife() { if(!ModeGame.immortal)lives--; }
+	public void loseLife() {
+            if(!ModeGame.immortal)lives--; 
+            
+        }
 	public int getLives() { return lives; }
 	
 	public void hit(int damage) {
@@ -220,7 +223,7 @@ public class Player extends MapObject {
 	}
 	
 	public void stop() {
-		left = right = up = down = flinching = 
+		left = right = flinching = 
 		jumping = attacking = charging = false;
 	}
 	
@@ -374,10 +377,7 @@ public class Player extends MapObject {
 			if(!e.isDead() && intersects(e) && !charging) {
 				hit(e.getDamage());
 			}
-			
-			if(e.isDead()) {
-			}
-			
+
 		}
 		
 		// set animation, ordered by priority

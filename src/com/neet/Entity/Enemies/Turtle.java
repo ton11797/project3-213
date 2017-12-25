@@ -1,6 +1,6 @@
 package com.neet.Entity.Enemies;
 
-import ModeGame.ModeGame;
+import com.neet.ModeGame.ModeGame;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 

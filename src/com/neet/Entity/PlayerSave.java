@@ -2,15 +2,16 @@ package com.neet.Entity;
 
 public class PlayerSave {
 	
-	private static int lives = 10;
+	private static int lives = 3;
 	private static int health = 10;
 	private static long time = 0;
+        
+        public static void init() {
+            lives = 3;
+            health = 10;
+            time = 0;
+        }
 	
-	public static void init() {
-		lives = 10;
-		health = 10;
-		time = 0;
-	}
 	
 	public static int getLives() { return lives; }
 	public static void setLives(int i) { lives = i; }

@@ -1,16 +1,21 @@
 package com.neet.GameState;
 
+import com.neet.Entity.PlayerSave;
+import com.neet.Handlers.Keys;
+import com.neet.Main.GUI;
 import com.neet.Main.GamePanel;
+import javax.swing.JFrame;
 
 public class GameStateManager {
 	
 	private GameState[] gameStates;
 	private int currentState;
+        private boolean run;
 	
 	private PauseState pauseState;
 	private boolean paused;
 	
-	public static final int NUMGAMESTATES = 16;
+	public static final int NUMGAMESTATES = 4;
 	public static final int MENUSTATE = 0;
 	public static final int LEVEL1 = 2;
 	public static final int LEVEL2 = 3;
@@ -19,11 +24,11 @@ public class GameStateManager {
 	
 	public GameStateManager() {
 		
-		
 		gameStates = new GameState[NUMGAMESTATES];
 		
 		pauseState = new PauseState(this);
 		paused = false;
+                run= true;
 		
 		currentState = LEVEL1;
                 loadState(currentState);
@@ -31,14 +36,16 @@ public class GameStateManager {
 	}
 	
 	private void loadState(int state) {
-		if(state == MENUSTATE)
-			gameStates[state] = new MenuState(this);
-		else if(state == LEVEL1)
-			gameStates[state] = new Level1State(this);
-		else if(state == LEVEL2)
-			gameStates[state] = new Level2State(this);
-		/*else if(state == LEVEL1CSTATE)
-			gameStates[state] = new Level1CState(this);*/
+		if(state == LEVEL1ASTATE)
+			gameStates[state] = new Level1AState(this);
+		else if(state == LEVEL1BSTATE)
+			gameStates[state] = new Level1BState(this);
+		else if(state == MENUSTATE){                   
+                    run = false;
+                    PlayerSave.init();
+                    new GUI().setVisible(true);
+		}
+
 	}
 	
 	private void unloadState(int state) {
@@ -51,7 +58,13 @@ public class GameStateManager {
 		loadState(currentState);
 	}
 	
-	public void setPaused(boolean b) { paused = b; }
+	public void setPaused(boolean b) {
+            paused = b;
+        }
+        
+        public boolean isRun(){
+            return run;
+        }
 	
 	public void update() {
 		if(paused) {
@@ -72,5 +85,6 @@ public class GameStateManager {
 			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		}
 	}
+        
 	
 }

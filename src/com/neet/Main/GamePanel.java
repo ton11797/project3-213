@@ -10,6 +10,11 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 
+import com.neet.GameState.GameStateManager;
+import com.neet.Handlers.Keys;
+import javax.swing.JFrame;
+
+
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
@@ -35,9 +40,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private boolean recording = false;
 	private int recordingCount = 0;
 	private boolean screenshot;
-	
-	public GamePanel() {
+	private JFrame Game;
+	public GamePanel(JFrame g) {
+            
 		super();
+                Game =g;
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
@@ -59,9 +66,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		g = (Graphics2D) image.getGraphics();
 		running = true;	
 		gsm = new GameStateManager();
+                Keys.init();
 		
 	}
-	
 	public void run() {
 		init();
 		
@@ -71,7 +78,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		
 		// game loop
 		while(running) {
-			
+                    
+                    running = gsm.isRun();
 			start = System.nanoTime();
 			
 			update();
@@ -90,7 +98,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 				e.printStackTrace();
 			}
 		}
-		
+		Game.dispose();
 	}
 	
 	private void update() {
@@ -104,7 +112,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		g2.dispose();
-
 	}
 	
 	public void keyTyped(KeyEvent key) {}

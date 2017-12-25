@@ -44,9 +44,6 @@ public class TileMap {
 	private int numRowsToDraw;
 	private int numColsToDraw;
 	
-	// effects
-	private boolean shaking;
-	private int intensity;
 	
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
@@ -121,10 +118,8 @@ public class TileMap {
 		if(rc==0)return Tile.NORMAL;
 		return tiles.get(rc-1).getType();
 	}
-	public boolean isShaking() { return shaking; }
 	
 	public void setTween(double d) { tween = d; }
-	public void setShaking(boolean b, int i) { shaking = b; intensity = i; }
 	public void setBounds(int i1, int i2, int i3, int i4) {
 		xmin = GamePanel.WIDTH - i1;
 		ymin = GamePanel.WIDTH - i2;
@@ -151,12 +146,7 @@ public class TileMap {
 		if(y > ymax) y = ymax;
 	}
 	
-	public void update() {
-		if(shaking) {
-			this.x += Math.random() * intensity - intensity / 2;
-			this.y += Math.random() * intensity - intensity / 2;
-		}
-	}
+
 	
 	public void draw(Graphics2D g) {
 		

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import com.neet.Entity.Enemy;
 import com.neet.Handlers.Content;
+import com.neet.ModeGame.ModeGame;
 import com.neet.TileMap.TileMap;
 
 
@@ -27,7 +28,7 @@ public class Pterodactyl extends Enemy {
 		cwidth = 504/10;
 		cheight = 452/10;
 		
-		damage = 1;
+		damage = ModeGame.damage;
 		moveSpeed = 5;
 		
 		idleSprites = Content.Pterodactyl[0];
