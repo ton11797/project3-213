@@ -2,14 +2,16 @@ package com.neet.GameState;
 
 import com.neet.Entity.Enemies.Pterodactyl;
 import com.neet.Entity.Enemies.Turtle;
-import com.neet.Entity.*;
+import com.neet.Entity.Enemy;
+import com.neet.Entity.HUD;
+import com.neet.Entity.Player;
+import com.neet.Entity.PlayerSave;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
 import com.neet.TileMap.TileMap;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 
@@ -24,18 +26,10 @@ public class Level2State extends GameState {
 
 	
 	private HUD hud;
-	private BufferedImage hageonText;
-	private Title title;
-	private Title subtitle;
 	
 	// events
-	private boolean blockInput = false;
-	private int eventCount = 0;
-	private boolean eventStart;
-	private ArrayList<Rectangle> tb;
 	private boolean eventFinish;
 	private boolean eventDead;
-	private boolean eventQuake;
 	
 	public Level2State(GameStateManager gsm) {
 		super(gsm);
@@ -68,20 +62,9 @@ public class Level2State extends GameState {
 		
 		player.init(enemies);
 		
-
-		
 		// hud
 		hud = new HUD(player);
 
-		// start event
-		eventStart = true;
-		tb = new ArrayList<Rectangle>();
-		eventStart();
-		
-		// sfx
-		//JukeBox.load("/SFX/teleport.mp3", "teleport");
-		//JukeBox.load("/SFX/explode.mp3", "explode");
-		//JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
 		
 	}
 	
@@ -137,37 +120,24 @@ public class Level2State extends GameState {
 		handleInput();
 		//System.out.println(player.getx()+" "+player.gety());
 		// check if quake event should start
-		if(player.getx() > 2175 && !tileMap.isShaking()) {
-			eventQuake = blockInput = true;
-		}
+
 		
 		// check if end of level event should start
 		if(player.getx() == 2850) {
-			eventFinish = blockInput = true;
+			eventFinish = true;
 		}
 		
 		// play events
-		if(eventStart) eventStart();
 		if(eventDead) eventDead();
 		if(eventFinish) eventFinish();
-		
-		// move title and subtitle
-		if(title != null) {
-			title.update();
-			if(title.shouldRemove()) title = null;
-		}
-		if(subtitle != null) {
-			subtitle.update();
-			if(subtitle.shouldRemove()) subtitle = null;
-		}
-		
+
 		// move backgrounds
 		temple.setPosition(tileMap.getx(), tileMap.gety());
 		
 		// update player
 		player.update();
 		if(player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
-			eventDead = blockInput = true;
+			eventDead = true;
 		}
 		
 		// update tilemap
@@ -216,7 +186,6 @@ public class Level2State extends GameState {
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
-		if(blockInput || player.getHealth() == 0) return;
 		player.setLeft(Keys.keyState[Keys.LEFT]);
 		player.setRight(Keys.keyState[Keys.RIGHT]);
 		player.setJumping(Keys.keyState[Keys.SPACE]);
@@ -234,16 +203,6 @@ public class Level2State extends GameState {
 		player.reset();
 		player.setPosition(50, 450);
 		populateEnemies();
-		blockInput = true;
-		eventCount = 0;
-		tileMap.setShaking(false, 0);
-		eventStart = true;
-		eventStart();
-	}
-
-	// level started
-	private void eventStart() {
-		eventStart = blockInput = false;
 	}
 
 	// player has died
@@ -252,8 +211,7 @@ public class Level2State extends GameState {
 			gsm.setState(GameStateManager.MENUSTATE);
 		}
 		else {
-			eventDead = blockInput = false;
-			eventCount = 0;
+			eventDead = false;
 			player.loseLife();
 			reset();
 		}

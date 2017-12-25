@@ -21,13 +21,8 @@ public class Level1State extends GameState {
 	private ArrayList<Enemy> enemies;
 	
 	private HUD hud;
-	private Title title;
-	private Title subtitle;
 	
 	// events
-	private boolean blockInput = false;
-	private boolean eventStart;
-	private ArrayList<Rectangle> tb;
 	private boolean eventFinish;
 	private boolean eventDead;
 	
@@ -73,11 +68,6 @@ public class Level1State extends GameState {
 		// hud
 		hud = new HUD(player);
 
-		// start event
-		eventStart = true;
-		tb = new ArrayList<Rectangle>();
-		eventStart();
-		
 
 	}
 	
@@ -93,32 +83,35 @@ public class Level1State extends GameState {
 		gp.setPosition(550, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(560, 300);
+		gp.setPosition(600, 300);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(1660, 100);
+		gp.setPosition(700, 330);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(1700, 100);
+		gp.setPosition(800, 250);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(2177, 100);
+		gp.setPosition(900, 260);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(2960, 100);
+		gp.setPosition(950, 260);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(2980, 100);
+		gp.setPosition(1000, 260);
 		enemies.add(gp);
 		gp = new Turtle (tileMap, player);
-		gp.setPosition(3000, 100);
+		gp.setPosition(1300, 300);
 		enemies.add(gp);
 		
 		g = new Pterodactyl(tileMap);
-		g.setPosition(300, 100);
+		g.setPosition(250, 300);
 		enemies.add(g);
 		g = new Pterodactyl(tileMap);
-		g.setPosition(500, 100);
+		g.setPosition(500, 200);
+		enemies.add(g);
+		g = new Pterodactyl(tileMap);
+		g.setPosition(1300, 200);
 		enemies.add(g);
 	}
 	
@@ -130,29 +123,19 @@ public class Level1State extends GameState {
 		// check if end of level event should start
 		System.out.println(player.getx()+" "+player.gety());
 		if(player.getx() >= 1400 &&player.gety()<=200) {
-			eventFinish = blockInput = true;
+			eventFinish = true;
 		}
 		
 		// check if player dead event should start
 		if(player.getHealth() == 0 || player.gety() > tileMap.getHeight()) {
-			eventDead = blockInput = true;
+			eventDead = true;
 		}
 		
 		// play events
-		if(eventStart) eventStart();
 		if(eventDead) eventDead();
 		if(eventFinish) eventFinish();
-		
-		// move title and subtitle
-		if(title != null) {
-			title.update();
-			if(title.shouldRemove()) title = null;
-		}
-		if(subtitle != null) {
-			subtitle.update();
-			if(subtitle.shouldRemove()) subtitle = null;
-		}
-		
+
+
 		// move backgrounds
 		clouds.setPosition(tileMap.getx(), tileMap.gety());
 		
@@ -184,7 +167,6 @@ public class Level1State extends GameState {
 		// draw background
 		sky.draw(g);
 		clouds.draw(g);
-		//mountains.draw(g);
 		
 		// draw tilemap
 		tileMap.draw(g);
@@ -201,28 +183,15 @@ public class Level1State extends GameState {
 		
 		// draw hud
 		hud.draw(g);
-		
-		// draw title
-		if(title != null) title.draw(g);
-		if(subtitle != null) subtitle.draw(g);
-		
-		// draw transition boxes
-		g.setColor(java.awt.Color.BLACK);
-		for(int i = 0; i < tb.size(); i++) {
-			g.fill(tb.get(i));
-		}
+
 		
 	}
 	
 	public void handleInput() {
 		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
-		if(blockInput || player.getHealth() == 0) return;
-		player.setUp(Keys.keyState[Keys.UP]);
 		player.setLeft(Keys.keyState[Keys.LEFT]);
-		player.setDown(Keys.keyState[Keys.DOWN]);
 		player.setRight(Keys.keyState[Keys.RIGHT]);
-		player.setJumping(Keys.keyState[Keys.BUTTON1]);
-		player.setDashing(Keys.keyState[Keys.BUTTON2]);
+		player.setJumping(Keys.keyState[Keys.SPACE]);
 		if(Keys.isPressed(Keys.BUTTON3)) player.setAttacking();
 		if(Keys.isPressed(Keys.BUTTON4)) player.setCharging();
 	}
@@ -236,27 +205,15 @@ public class Level1State extends GameState {
 		player.reset();
 		player.setPosition(80, 161);
 		populateEnemies();
-		blockInput = true;
-		tileMap.setShaking(false, 0);
-		eventStart = true;
-		eventStart();
+
 	}
-	
-	// level started
-	private void eventStart() {
-		eventStart = blockInput = false;
-	}
+
 	
 	// player has died
 	private void eventDead() {
-		if(player.getLives() == 0) {
-			gsm.setState(GameStateManager.MENUSTATE);
-		}
-		else {
-			eventDead = blockInput = false;
-			player.loseLife();
-			reset();
-		}
+		eventDead = false;
+		player.loseLife();
+		reset();
 	}
 	
 	// finished level

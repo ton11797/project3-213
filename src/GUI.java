@@ -1,13 +1,9 @@
-
-
-import java.awt.Color;
-import javax.swing.*;
-
-import java.awt.Point;
-import javax.swing.UIManager;
 import ModeGame.ModeGame;
-import java.awt.event.KeyEvent; 
 import com.neet.Main.GamePanel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -105,7 +101,7 @@ public class GUI extends JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Title/how_play.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Title/how_play.png")); // NOI18N
 
         X1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         X1.setForeground(new java.awt.Color(255, 255, 255));
@@ -543,6 +539,7 @@ public class GUI extends JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+
             }
         });
 
@@ -678,7 +675,11 @@ public class GUI extends JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                /*GamePanel g=new GamePanel(getGraphics());
+                g.setVisible(true);
+                setContentPane(g);*/
 
+                //System.out.print(getContentPane().getComponentCount());
                 this.hide();
 
                 Game.add(new GamePanel());

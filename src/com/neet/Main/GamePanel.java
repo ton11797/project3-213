@@ -1,16 +1,13 @@
 package com.neet.Main;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import com.neet.GameState.GameStateManager;
+import com.neet.Handlers.Keys;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-
-import javax.swing.JPanel;
-
-import com.neet.GameState.GameStateManager;
-import com.neet.Handlers.Keys;
 
 
 @SuppressWarnings("serial")
@@ -44,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
+
 	}
 	
 	public void addNotify() {
@@ -58,7 +56,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private void init() {
 		
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-		g = (Graphics2D) image.getGraphics();				
+		g = (Graphics2D) image.getGraphics();
 		running = true;	
 		gsm = new GameStateManager();
 		

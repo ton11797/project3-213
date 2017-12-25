@@ -1,7 +1,6 @@
 package com.neet.GameState;
 
 import com.neet.Entity.PlayerSave;
-import com.neet.Handlers.Keys;
 import com.neet.Main.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -101,17 +100,7 @@ public class MenuState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.ENTER)) select();
-		if(Keys.isPressed(Keys.UP)) {
-			if(currentChoice > 0) {
-				currentChoice--;
-			}
-		}
-		if(Keys.isPressed(Keys.DOWN)) {
-			if(currentChoice < options.length - 1) {
-				currentChoice++;
-			}
-		}
+		
 	}
 	
 }
