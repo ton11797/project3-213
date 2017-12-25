@@ -1,27 +1,30 @@
 package com.neet.GameState;
 
+import com.neet.Main.GUI;
 import com.neet.Main.GamePanel;
+import javax.swing.JFrame;
 
 public class GameStateManager {
 	
 	private GameState[] gameStates;
 	private int currentState;
+        private boolean run;
 	
 	private PauseState pauseState;
 	private boolean paused;
 	
-	public static final int NUMGAMESTATES = 16;
+	public static final int NUMGAMESTATES = 4;
 	public static final int MENUSTATE = 0;
-	public static final int LEVEL1ASTATE = 2;
-	public static final int LEVEL1BSTATE = 3;
+	public static final int LEVEL1ASTATE = 1;
+	public static final int LEVEL1BSTATE = 2;
 	
 	public GameStateManager() {
-		
 		
 		gameStates = new GameState[NUMGAMESTATES];
 		
 		pauseState = new PauseState(this);
 		paused = false;
+                run= true;
 		
 		currentState = LEVEL1ASTATE;
                 loadState(currentState);
@@ -33,7 +36,9 @@ public class GameStateManager {
 			gameStates[state] = new Level1AState(this);
 		else if(state == LEVEL1BSTATE)
 			gameStates[state] = new Level1BState(this);
-		else if(state == MENUSTATE){
+		else if(state == MENUSTATE){                   
+                    run = false;
+                    new GUI().setVisible(true);
 		}
 
 	}
@@ -48,7 +53,13 @@ public class GameStateManager {
 		loadState(currentState);
 	}
 	
-	public void setPaused(boolean b) { paused = b; }
+	public void setPaused(boolean b) {
+            paused = b;
+        }
+        
+        public boolean isRun(){
+            return run;
+        }
 	
 	public void update() {
 		if(paused) {
@@ -69,5 +80,6 @@ public class GameStateManager {
 			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		}
 	}
+        
 	
 }

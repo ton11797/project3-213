@@ -1,6 +1,6 @@
 package com.neet.Entity;
 
-import ModeGame.ModeGame;
+import com.neet.ModeGame.ModeGame;
 import com.neet.TileMap.TileMap;
 
 import javax.imageio.ImageIO;
@@ -220,7 +220,7 @@ public class Player extends MapObject {
 	}
 	
 	public void stop() {
-		left = right = up = down = flinching = 
+		left = right = flinching = 
 		jumping = attacking = charging = false;
 	}
 	

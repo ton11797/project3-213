@@ -96,10 +96,6 @@ public class Level1BState extends GameState {
 		tb = new ArrayList<Rectangle>();
 		eventStart();
 		
-		// sfx
-		//JukeBox.load("/SFX/teleport.mp3", "teleport");
-		//JukeBox.load("/SFX/explode.mp3", "explode");
-		//JukeBox.load("/SFX/enemyhit.mp3", "enemyhit");
 		
 	}
 	
@@ -295,7 +291,7 @@ public class Level1BState extends GameState {
 		PlayerSave.setHealth(player.getHealth());
 		PlayerSave.setLives(player.getLives());
 		PlayerSave.setTime(player.getTime());
-		gsm.setState(GameStateManager.LEVEL1BSTATE);
+		gsm.setState(GameStateManager.MENUSTATE);
 	}
 
 }

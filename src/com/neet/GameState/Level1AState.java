@@ -4,6 +4,7 @@ import com.neet.Entity.Enemies.Pterodactyl;
 import com.neet.Entity.Enemies.Turtle;
 import com.neet.Entity.*;
 import com.neet.Handlers.Keys;
+import com.neet.Main.GUI;
 import com.neet.Main.GamePanel;
 import com.neet.TileMap.Background;
 import com.neet.TileMap.TileMap;
@@ -216,7 +217,7 @@ public class Level1AState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
+		if(Keys.isPressed(Keys.ESCAPE)) {gsm.setPaused(true);}
 		if(blockInput || player.getHealth() == 0) return;	
 		player.setLeft(Keys.keyState[Keys.LEFT]);
 		player.setRight(Keys.keyState[Keys.RIGHT]);

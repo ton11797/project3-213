@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import com.neet.GameState.GameStateManager;
 import com.neet.Handlers.Keys;
+import javax.swing.JFrame;
 
 
 @SuppressWarnings("serial")
@@ -38,9 +39,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private boolean recording = false;
 	private int recordingCount = 0;
 	private boolean screenshot;
-	
-	public GamePanel() {
+	private JFrame Game;
+	public GamePanel(JFrame g) {
+            
 		super();
+                Game =g;
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
@@ -63,7 +66,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		gsm = new GameStateManager();
 		
 	}
-	
 	public void run() {
 		init();
 		
@@ -73,7 +75,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		
 		// game loop
 		while(running) {
-			
+                    
+                    running = gsm.isRun();
 			start = System.nanoTime();
 			
 			update();
@@ -92,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 				e.printStackTrace();
 			}
 		}
-		
+		Game.dispose();
 	}
 	
 	private void update() {
