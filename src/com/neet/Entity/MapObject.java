@@ -49,8 +49,6 @@ public abstract class MapObject {
 	// movement
 	protected boolean left;
 	protected boolean right;
-	protected boolean up;
-	protected boolean down;
 	protected boolean jumping;
 	protected boolean falling;
 	
@@ -188,8 +186,6 @@ public abstract class MapObject {
 	
 	public void setLeft(boolean b) { left = b; }
 	public void setRight(boolean b) { right = b; }
-	public void setUp(boolean b) { up = b; }
-	public void setDown(boolean b) { down = b; }
 	public void setJumping(boolean b) { jumping = b; }
 
 	

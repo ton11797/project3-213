@@ -7,24 +7,40 @@ import java.awt.Graphics2D;
 import com.neet.Handlers.Keys;
 import com.neet.Main.GUI;
 import com.neet.Main.GamePanel;
+import java.util.Random;
 import javax.swing.JFrame;
 
 public class PauseState extends GameState {
 	
 	private Font font;
+        private int movex ,movey , dx,dy;
 	
 	public PauseState(GameStateManager gsm) {
 
 		super(gsm);
 		// fonts
 		font = new Font("Tahoma", Font.BOLD, 14);
+                
+                movex = movey = 90;
+                dx = dy = 2;
 		
 	}
 	
 	public void init() {}
 	
 	public void update() {
-		handleInput();
+		handleInput();   
+                if(movex ==0 || movex == GamePanel.WIDTH-100 ){
+                  // movex = new Random().nextInt(GamePanel.WIDTH);
+                  // movey = new Random().nextInt(GamePanel.HEIGHT);
+                  dx = -dx;
+                  
+                }
+                if(movey ==0 || movey == GamePanel.HEIGHT){
+                    dy= -dy;
+                }
+                movex+=dx;
+                movey+=dy;
                 
 	}
 	
@@ -33,8 +49,8 @@ public class PauseState extends GameState {
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		g.setColor(Color.WHITE);
 		g.setFont(font);
-		g.drawString("Game Paused", 90, 90);        
-
+		g.drawString("Game Paused", movex,movey);        
+                
 	}
 	
 	public void handleInput() {

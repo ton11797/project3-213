@@ -1,5 +1,6 @@
 package com.neet.GameState;
 
+import com.neet.Entity.PlayerSave;
 import com.neet.Main.GUI;
 import com.neet.Main.GamePanel;
 import javax.swing.JFrame;
@@ -38,6 +39,7 @@ public class GameStateManager {
 			gameStates[state] = new Level1BState(this);
 		else if(state == MENUSTATE){                   
                     run = false;
+                    PlayerSave.init();
                     new GUI().setVisible(true);
 		}
 

@@ -26,9 +26,6 @@ public class Level1BState extends GameState {
 
 	
 	private HUD hud;
-	private BufferedImage hageonText;
-	private Title title;
-	private Title subtitle;
 	
 	// events
 	private boolean blockInput = false;
@@ -37,7 +34,6 @@ public class Level1BState extends GameState {
 	private ArrayList<Rectangle> tb;
 	private boolean eventFinish;
 	private boolean eventDead;
-	private boolean eventQuake;
 	
 	public Level1BState(GameStateManager gsm) {
 		super(gsm);
@@ -75,21 +71,6 @@ public class Level1BState extends GameState {
 		// hud
 		hud = new HUD(player);
 		
-		// title and subtitle
-		try {
-
-			hageonText = ImageIO.read(
-					new File("Resources/HUD/HageonTemple.gif")
-			);
-			title = new Title(hageonText.getSubimage(0, 0, 178, 20));
-			title.sety(60);
-			subtitle = new Title(hageonText.getSubimage(0, 33, 91, 13));
-			subtitle.sety(85);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
 		
 		// start event
 		eventStart = true;
@@ -101,33 +82,33 @@ public class Level1BState extends GameState {
 	
 	private void populateEnemies() {
 		enemies.clear();
-		Turtle gp;
+		Turtle tt;
 		Pterodactyl g;
 		
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(750, 100);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(900, 150);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(1320, 250);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(1570, 160);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(1590, 160);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(2600, 370);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(2620, 370);
-		enemies.add(gp);
-		gp = new Turtle(tileMap, player);
-		gp.setPosition(2640, 370);
-		enemies.add(gp);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(750, 100);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(900, 150);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(1320, 250);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(1570, 160);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(1590, 160);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(2600, 370);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(2620, 370);
+		enemies.add(tt);
+		tt = new Turtle(tileMap, player);
+		tt.setPosition(2640, 370);
+		enemies.add(tt);
 		
 		g = new Pterodactyl(tileMap);
 		g.setPosition(904, 130);
@@ -149,14 +130,10 @@ public class Level1BState extends GameState {
 		
 		// check keys
 		handleInput();
-		//System.out.println(player.getx()+" "+player.gety());
-		// check if quake event should start
-		if(player.getx() > 2175 && !tileMap.isShaking()) {
-			eventQuake = blockInput = true;
-		}
+
 		
 		// check if end of level event should start
-		if(player.getx() == 2850) {
+		if(player.getx() >= 2850) {
 			eventFinish = blockInput = true;
 		}
 		
@@ -165,15 +142,7 @@ public class Level1BState extends GameState {
 		if(eventDead) eventDead();
 		if(eventFinish) eventFinish();
 		
-		// move title and subtitle
-		if(title != null) {
-			title.update();
-			if(title.shouldRemove()) title = null;
-		}
-		if(subtitle != null) {
-			subtitle.update();
-			if(subtitle.shouldRemove()) subtitle = null;
-		}
+
 		
 		// move backgrounds
 		temple.setPosition(tileMap.getx(), tileMap.gety());
@@ -225,9 +194,6 @@ public class Level1BState extends GameState {
 		// draw hud
 		hud.draw(g);
 		
-		// draw title
-		if(title != null) title.draw(g);
-		if(subtitle != null) subtitle.draw(g);
 		
 		// draw transition boxes
 		g.setColor(java.awt.Color.BLACK);
@@ -253,19 +219,14 @@ public class Level1BState extends GameState {
 	
 	// reset level
 	private void reset() {
-		player.loseLife();
 		player.reset();
 		player.setPosition(300, 131);
 		populateEnemies();
 		blockInput = true;
 		eventCount = 0;
-		tileMap.setShaking(false, 0);
 		eventStart = true;
 		eventStart();
-		title = new Title(hageonText.getSubimage(0, 0, 178, 20));
-		title.sety(60);
-		subtitle = new Title(hageonText.getSubimage(0, 33, 91, 13));
-		subtitle.sety(85);
+
 	}
 
 	// level started
@@ -275,14 +236,15 @@ public class Level1BState extends GameState {
 
 	// player has died
 	private void eventDead() {
-		if(player.getLives() == 0) {
+		if(player.getLives() <= 0) {
 			gsm.setState(GameStateManager.MENUSTATE);
 		}
 		else {
+                        System.out.print(player.getLives());
 			eventDead = blockInput = false;
 			eventCount = 0;
 			player.loseLife();
-			reset();
+                        reset();
 		}
 	}
 
