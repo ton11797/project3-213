@@ -7,12 +7,8 @@ import java.awt.Point;
 import javax.swing.UIManager;
 import java.awt.event.KeyEvent; 
 import com.neet.ModeGame.ModeGame;
+import java.awt.Image;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -34,7 +30,6 @@ public class GUI extends JFrame {
     
     //variable
     Point point;
-    public boolean resume = false;
     int character = 2;
     
     public GUI() {
@@ -777,6 +772,8 @@ public class GUI extends JFrame {
         ModeGame.SetSpeed(SliderSpeed.getValue());
 
         this.dispose();
+        Game.setTitle("JAPPA GAME");
+        Game.setIconImage(new ImageIcon("Resources/Tilesets/boxItem.png").getImage() );
         Game.add(new GamePanel(Game));
         Game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Game.setResizable(false);
@@ -891,7 +888,6 @@ public class GUI extends JFrame {
 
     private void X2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_X2MouseClicked
         // TODO add your handling code here:
-        ModeGame.SetSpeed( SliderSpeed.getValue() );
         Option.dispose();
     }//GEN-LAST:event_X2MouseClicked
 

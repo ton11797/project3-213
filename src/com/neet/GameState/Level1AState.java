@@ -155,7 +155,6 @@ public class Level1AState extends GameState {
 			GamePanel.WIDTH / 2 - player.getx(),
 			GamePanel.HEIGHT / 2 - player.gety()
 		);
-		tileMap.update();
 		tileMap.fixBounds();
 		
 		// update enemies

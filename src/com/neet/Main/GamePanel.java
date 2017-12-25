@@ -64,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		g = (Graphics2D) image.getGraphics();				
 		running = true;	
 		gsm = new GameStateManager();
+                Keys.init();
 		
 	}
 	public void run() {
@@ -109,7 +110,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		g2.dispose();
-
 	}
 	
 	public void keyTyped(KeyEvent key) {}

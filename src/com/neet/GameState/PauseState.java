@@ -18,27 +18,25 @@ public class PauseState extends GameState {
 	public PauseState(GameStateManager gsm) {
 
 		super(gsm);
-		// fonts
-		font = new Font("Tahoma", Font.BOLD, 14);
-                
-                movex = movey = 90;
-                dx = dy = 2;
-		
+		init();
 	}
 	
-	public void init() {}
+	public void init() {
+                //font
+                font = new Font("Tahoma", Font.BOLD, 14);
+                
+                //movement
+                movex = movey = 90;
+                dx = dy = 2;
+        
+        }
 	
 	public void update() {
 		handleInput();   
-                if(movex ==0 || movex == GamePanel.WIDTH-100 ){
-                  // movex = new Random().nextInt(GamePanel.WIDTH);
-                  // movey = new Random().nextInt(GamePanel.HEIGHT);
-                  dx = -dx;
-                  
-                }
-                if(movey ==0 || movey == GamePanel.HEIGHT){
-                    dy= -dy;
-                }
+                
+                if(movex ==0 || movex == GamePanel.WIDTH-100 )dx = -dx;
+                if(movey ==0 || movey == GamePanel.HEIGHT)dy= -dy;
+                
                 movex+=dx;
                 movey+=dy;
                 

@@ -158,7 +158,6 @@ public class Level1BState extends GameState {
 			GamePanel.WIDTH / 2 - player.getx(),
 			GamePanel.HEIGHT / 2 - player.gety()
 		);
-		tileMap.update();
 		tileMap.fixBounds();
 		
 		// update enemies
@@ -240,7 +239,6 @@ public class Level1BState extends GameState {
 			gsm.setState(GameStateManager.MENUSTATE);
 		}
 		else {
-                        System.out.print(player.getLives());
 			eventDead = blockInput = false;
 			eventCount = 0;
 			player.loseLife();
